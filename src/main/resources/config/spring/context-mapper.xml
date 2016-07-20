@@ -7,6 +7,9 @@
  
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
+         
+         <property name="configLocation" value="classpath:/mapper/mybatisConfig.xml" />
+         
         <property name="mapperLocations" value="classpath:/mapper/**/*_SQL.xml" />
     </bean>
      <!-- SqlSession을 구현하고, 코드에서 SqlSessoin을 대체하는 역할 -->

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 
+	<settings>
+        <setting name="cacheEnabled" value="true" />
+        <setting name="lazyLoadingEnabled" value="true" />
+        <setting name="aggressiveLazyLoading" value="true" />
+        <setting name="useGeneratedKeys" value="true" />
+        <setting name="defaultExecutorType" value="SIMPLE" />
+        <setting name="defaultStatementTimeout" value="5" />
+	</settings>
+	 -->
+
+	<typeAliases>
+        <!-- TODO START: VO Setting -->
+        
+		<!-- EXAMPLE <typeAlias type="com.toast.oneq.vo.UserVo" alias="user"/> -->
+        <!-- UserVo를 mybatis에서 user하는 이름으로 사용하겠다는 의미 -->
+        <typeAlias type="vote.com.vo.User" alias="user" />
+        <typeAlias type="vote.com.vo.Article" alias="article" />
+        
+        <!-- TODO END: VO Setting -->
+	</typeAliases>
+</configuration>
