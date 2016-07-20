@@ -11,13 +11,20 @@
 		<meta name="author" content="">
 		<link rel="icon" href="../../favicon.ico">
 		
-		<title>VOTE YOUR OPINION</title>
 		
+		<!-- bootstrap cdn -->
 		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+		
+		<!-- for footer -->
+		<link href="http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+		
 		<link href="css/login.css" rel="stylesheet">
-		<!--<link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">-->
+		
 		<script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+		
+		<title>VOTE YOUR OPINION</title>
 		
 	</head>
 	
@@ -27,7 +34,7 @@
 		
 			<form class="form-signin" action="login.do" method="post">
 				<h2 class="form-signin-heading">VOTE YOUR OPINION</h2>
-				<input type="text" id="inputEmail" name="email" class="form-control" placeholder="input your ID" required autofocus>
+				<input type="text" id="inputId" name="id" class="form-control" placeholder="input your ID" required autofocus>
 				<input type="password" id="inputPassword" name="password" class="form-control" placeholder="input your Password" required>
 				
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button><br>
