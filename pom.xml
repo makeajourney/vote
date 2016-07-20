@@ -236,7 +236,7 @@
         </dependency>
         
         <!-- AspectJ -->
-        <!-- 
+
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
@@ -254,7 +254,6 @@
             <artifactId>aspectjtools</artifactId>
             <version>${org.aspectj-version}</version>
         </dependency>
-        -->
         
         <!-- Logging -->
         <!-- 

@@ -1,6 +1,7 @@
 package vote.com.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -26,20 +27,13 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
-	public ModelAndView login(@RequestParam("id") String id, @RequestParam("password") String password) {
-		if (loginService.login(new User().setId(id).setPassword(password))) {
-//			CookieGenerator cg = new CookieGenerator();
-//
-//			cg.setCookieName("cookie_value_test");
-//			cg.addCookie(response, "vote");
+	public ModelAndView login(
+			@RequestParam("id") String id, @RequestParam("password") String password,
+			HttpServletResponse response) {
+		if (loginService.login(new User().setId(id).setPassword(password), response)) {
 			return new ModelAndView("redirect:/main.do");
 		} else {
 			return null;			
 		}
-	}
-	
-	@RequestMapping(value="/main.do")
-	public ModelAndView mainPage() {
-		return new ModelAndView("/main");
 	}
 }

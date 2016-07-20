@@ -12,6 +12,8 @@ public class Article {
 	private int userNo;
 	private boolean delete;
 	
+	private User user;
+	
 	public int getNo() {
 		return no;
 	}
@@ -66,6 +68,13 @@ public class Article {
 	}
 	public Article setDelete(boolean delete) {
 		this.delete = delete;
+		return this;
+	}
+	public User getUser() {
+		return user;
+	}
+	public Article setUser(User user) {
+		this.user = user;
 		return this;
 	}
 }
