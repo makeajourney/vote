@@ -10,7 +10,6 @@ public class VoteDao extends AbstractDAO{
 
 	public User selectUser(User user) {
 		// TODO Auto-generated method stub
-		return (User)selectOne("vote.selectUser", user);
+		return (User) selectOne("vote.selectUser", user);
 	}
-
 }

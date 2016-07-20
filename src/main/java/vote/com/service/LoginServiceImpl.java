@@ -19,6 +19,7 @@ public class LoginServiceImpl implements LoginService {
 	public boolean login(User user) {
 		// TODO Auto-generated method stub
 		User getUser = voteDao.selectUser(user);
+		System.out.println(getUser.getId() + " " + getUser.getPassword());
 		if (user.getPassword().equals(getUser.getPassword()))
 			return true;
 		else

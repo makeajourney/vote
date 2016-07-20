@@ -59,11 +59,13 @@
 		    	</exclusion>
 		    </exclusions>
         </dependency>
+        <!-- 
         <dependency>
 		    <groupId>egovframework.rte</groupId>
 		    <artifactId>egovframework.rte.psl.dataaccess</artifactId>
 		    <version>${egovframework.rte.version}</version>
         </dependency>
+         -->
         <dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.fdl.idgnr</artifactId>
@@ -256,6 +258,7 @@
         
         <!-- Logging -->
         <!-- 
+         -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -281,7 +284,6 @@
             <artifactId>log4jdbc-remix</artifactId>
             <version>0.2.7</version>
         </dependency>
-         -->
          
         <!-- MappingJacksonJsonView -->
         <dependency>

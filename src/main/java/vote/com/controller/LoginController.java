@@ -37,4 +37,9 @@ public class LoginController {
 			return null;			
 		}
 	}
+	
+	@RequestMapping(value="/main.do")
+	public ModelAndView mainPage() {
+		return new ModelAndView("/main");
+	}
 }
