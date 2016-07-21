@@ -36,4 +36,13 @@ public class LoginController {
 			return null;			
 		}
 	}
+	
+	@RequestMapping(value="/signup.do", method=RequestMethod.POST)
+	public ModelAndView signup(
+			@RequestParam("id") String id,
+			@RequestParam("password") String password, @RequestParam("name") String name,
+			HttpServletResponse response) {
+		loginService.signup(new User().setId(id).setPassword(password).setName(name), response);	
+		return new ModelAndView("redirect:/main.do");
+	}
 }

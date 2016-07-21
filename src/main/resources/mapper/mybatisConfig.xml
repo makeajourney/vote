@@ -20,6 +20,8 @@
         <!-- UserVo를 mybatis에서 user하는 이름으로 사용하겠다는 의미 -->
         <typeAlias type="vote.com.vo.User" alias="user" />
         <typeAlias type="vote.com.vo.Article" alias="article" />
+        <typeAlias type="vote.com.vo.VoteElement" alias="voteElement" />
+        <typeAlias type="vote.com.vo.Tag" alias="tag" />
         
         <!-- TODO END: VO Setting -->
 	</typeAliases>

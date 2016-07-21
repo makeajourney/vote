@@ -1,13 +1,17 @@
 package vote.com.controller;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import vote.com.service.VoteService;
+import vote.com.vo.Article;
 
 @Controller
 public class VoteController {
@@ -18,6 +22,23 @@ public class VoteController {
 	
 	@RequestMapping(value="/main.do")
 	public ModelAndView mainPage() {
-		return new ModelAndView("/main");
+		ModelAndView mv = new ModelAndView("/main");
+		ArrayList<Article> articleList = new ArrayList<Article>();
+		articleList = voteService.getArticleList();
+		mv.addObject("articleList", articleList);		
+		return mv;
+	}
+	
+	
+	
+	
+	// /voteDetail.do?articleno=${article.no }
+	
+	@RequestMapping(value="/voteDetail.do")
+	public ModelAndView voteDetail(@RequestParam("articleno") int articleNo) {
+		ModelAndView mv = new ModelAndView("/vote");
+		Article article = voteService.getArticleDetail(articleNo);
+		mv.addObject("article", article);
+		return mv;
 	}
 }

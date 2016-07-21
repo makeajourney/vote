@@ -1,3 +1,14 @@
+body {
+	padding-top: 100px;
+}
+
+.enable {
+	display : block;
+}
+
+.disable {
+	display : none;
+}
 
 .form-signin {
   max-width: 370px;

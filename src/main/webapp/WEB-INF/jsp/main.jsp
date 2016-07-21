@@ -7,10 +7,11 @@
 <html>
 	<head>
 		<%@ include file="/WEB-INF/include/head.jsp" %>
+		<link href="css/main.css" rel="stylesheet">
 	</head>
 	<body>
+		<%@ include file="/WEB-INF/include/header.jsp" %>
 		
-		<p>main page</p>
 		<div class=container>
 			<table class="table">
 				<thead>
@@ -29,10 +30,11 @@
 		                        <tr>
 		                            <td>${article.no}</td>
 		                            <td class="title">
-		                                <a href="#this" name="title">${article.title }</a>
-		                                <input type="hidden" id="IDX" value="${row.no }">
+		                                <a href="<c:url value='/voteDetail.do?articleno=${article.no }' />" name="title">
+		                                	${article.title }
+		                                </a>
 		                            </td>
-		                            <td>${article.writer }</td>
+		                            <td>${article.username }</td>
 		                            <td>${article.createTime }</td>
 		                            <td>${article.hitCount }</td>
 		                        </tr>

@@ -22,17 +22,27 @@ public class LoginServiceImpl implements LoginService {
 		// TODO Auto-generated method stub
 		User getUser = voteDao.selectUser(user);
 		System.out.println(getUser.getId() + " " + getUser.getPassword());
+		
 		if (user.getPassword().equals(getUser.getPassword())) {
-			
-			CookieGenerator cg = new CookieGenerator();
-
-			cg.setCookieName("vote_username");
-			cg.addCookie(response, getUser.getId());
-			
+			this.addCookie(getUser, response);			
 			return true;
 		}
 		else
 			return false;
 	}
 
+	@Override
+	public void signup(User user, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		User signupUser = voteDao.addUser(user);
+		
+		this.addCookie(signupUser, response);
+	}
+	
+	private void addCookie(User user, HttpServletResponse response) {
+		CookieGenerator cg = new CookieGenerator();
+		
+		cg.setCookieName("vote_username");
+		cg.addCookie(response, user.getId());
+	}
 }

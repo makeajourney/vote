@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="vote">
-    
+    <!-- user -->
     <select id="selectUser" parameterType="user" resultType="user">
         <![CDATA[
             SELECT
@@ -35,35 +35,36 @@
     	]]>
     </insert>
     
-    <select id="selectOneArticle" parameterType="article" resultType="article">
+    <!-- article -->
+    <select id="selectOneArticle" parameterType="int" resultType="article">
     	<![CDATA[
     		SELECT
-    			no,
-    			title,
-    			content,
-    			hit_count,
-    			update_date,
-    			user_no
+    			article.no no,
+    			article.title title,
+    			article.content content,
+    			article.hit_count hitCount,
+    			article.create_date createDate,
+    			user.name username
     		FROM
-    			article
+    			article, user
     		WHERE
-    			id = #{id}
+    			article.no = #{articleNo} and article.user_no = user.no
     	]]>
     </select>
     
-    <select id="selectListOfArticles" parameterType="Integer" resultType="article">
+    <select id="selectListOfArticles" resultType="article">
     	<![CDATA[
 	    	SELECT
-    			no,
-    			title,
-    			content,
-    			hit_count,
-    			update_date,
-    			user_no
+    			article.no no,
+    			article.title title,
+    			article.hit_count hitCount,
+    			article.create_date createDate,
+    			user.name username
     		FROM
-    			article
+    			article, user
+    		WHERE
+    			article.user_no = user.no
     		ORDER BY create_date DESC
-    		LIMIT 
     	]]>
     </select>
 </mapper>

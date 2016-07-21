@@ -8,4 +8,6 @@ public interface LoginService {
 
 	boolean login(User user, HttpServletResponse response);
 
+	void signup(User user, HttpServletResponse response);
+
 }

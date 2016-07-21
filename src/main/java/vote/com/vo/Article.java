@@ -12,7 +12,7 @@ public class Article {
 	private int userNo;
 	private boolean delete;
 	
-	private User user;
+	private String username;
 	
 	public int getNo() {
 		return no;
@@ -70,11 +70,11 @@ public class Article {
 		this.delete = delete;
 		return this;
 	}
-	public User getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
-	public Article setUser(User user) {
-		this.user = user;
+	public Article setUser(String username) {
+		this.username = username;
 		return this;
 	}
 }
