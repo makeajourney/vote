@@ -67,4 +67,28 @@
     		ORDER BY create_date DESC
     	]]>
     </select>
+    
+    <insert id="insertOneArticle" parameterType="article">
+    	<![CDATA[
+    		
+    	]]>
+    </insert>
+    
+    <!-- comment -->
+    
+    <select id="selectCommentsForArticle" parameterType="int" resultType="comment">
+    	<![CDATA[
+    		select 
+    			user.name username,
+    			comment.context context, 
+    			comment.update_date updateDate
+    		from
+    			comment, 
+    			user 
+    		where
+    			article_no = #{articleNo} and 
+    			user.no = comment.user_no
+    		order by create_date ASC
+    	]]>
+    </select> 
 </mapper>

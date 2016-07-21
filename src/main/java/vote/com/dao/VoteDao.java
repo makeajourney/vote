@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 import vote.com.vo.Article;
+import vote.com.vo.Comment;
 import vote.com.vo.User;
 import vote.common.dao.AbstractDAO;
 
@@ -31,5 +32,11 @@ public class VoteDao extends AbstractDAO{
 	public Article getArticleDetail(int articleNo) {
 		// TODO Auto-generated method stub
 		return (Article) selectOne("vote.selectOneArticle", articleNo);
+	}
+
+	@SuppressWarnings("unchecked")
+	public ArrayList<Comment> getCommentsForArticle(int articleNo) {
+		// TODO Auto-generated method stub
+		return (ArrayList<Comment>) selectList("vote.selectCommentsForArticle", articleNo);
 	}
 }

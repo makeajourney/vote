@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import vote.com.service.VoteService;
 import vote.com.vo.Article;
+import vote.com.vo.Comment;
 
 @Controller
 public class VoteController {
@@ -29,16 +30,15 @@ public class VoteController {
 		return mv;
 	}
 	
-	
-	
-	
-	// /voteDetail.do?articleno=${article.no }
-	
 	@RequestMapping(value="/voteDetail.do")
 	public ModelAndView voteDetail(@RequestParam("articleno") int articleNo) {
 		ModelAndView mv = new ModelAndView("/vote");
 		Article article = voteService.getArticleDetail(articleNo);
+		ArrayList<Comment> comments = new ArrayList<Comment>();
+		comments = 	voteService.getComments(articleNo);
 		mv.addObject("article", article);
+		mv.addObject("comments", comments);
+		
 		return mv;
 	}
 }

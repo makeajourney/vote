@@ -22,6 +22,7 @@
         <typeAlias type="vote.com.vo.Article" alias="article" />
         <typeAlias type="vote.com.vo.VoteElement" alias="voteElement" />
         <typeAlias type="vote.com.vo.Tag" alias="tag" />
+        <typeAlias type="vote.com.vo.Comment" alias="comment" />
         
         <!-- TODO END: VO Setting -->
 	</typeAliases>

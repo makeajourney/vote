@@ -19,7 +19,22 @@
 			<p>작성시각 : ${article.createTime }</p>
 			<p>조회수 : ${article.hitCount }</p>
 			<p>내용 : ${article.content }</p>
+			<p>댓글 영역 :</p>
+			
+			<c:choose>
+				<c:when test="${fn:length(comments) > 0}">
+					<c:forEach items="${comments }" var="comment">
+						<p>${comment.username}, ${comment.context }, ${comment.updateDate }</p>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<p>조회된 결과가 없습니다.</p>
+				</c:otherwise>
+			</c:choose>
+		
 		</div>
+		
+			
 		
 		<%@ include file="/WEB-INF/include/footer.jsp" %>
 	</body>
