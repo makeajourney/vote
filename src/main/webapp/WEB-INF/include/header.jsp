@@ -17,7 +17,7 @@
 		
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav  navbar-right">	
-				<li><a href="#about" id="new_vote">new vote</a></li>
+				<li><a href="<c:url value='/showWriteVoteWindow.do' />" id="new_vote">new vote</a></li>
 								
 				<li class="dropdown pull-right">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User name <span class="caret"></span></a>

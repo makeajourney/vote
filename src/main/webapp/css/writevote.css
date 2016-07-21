@@ -1,0 +1,39 @@
+#focusedInput {
+  width:300px;
+}
+
+
+#title {
+  width:80px;
+  margin-bottom:0px; 
+
+}
+
+#comment {
+  height: 400px;
+}
+
+#tags {
+  height: 80px;
+}
+
+.input-group-addon {
+  font-size: 20px;
+}
+
+#vote {
+  text-align: left;
+}
+.nav-pills {
+  background-color: #eee;
+  border:none;
+}
+
+#addImgBtn {
+  padding-left: 0px;
+}
+
+#addVoElBtn {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}

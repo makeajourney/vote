@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,5 +41,10 @@ public class VoteController {
 		mv.addObject("comments", comments);
 		
 		return mv;
+	}
+	
+	@RequestMapping(value="/showWriteVoteWindow.do", method=RequestMethod.GET)
+	public ModelAndView showWriteWindow() {
+		return new ModelAndView("/writevote");
 	}
 }
