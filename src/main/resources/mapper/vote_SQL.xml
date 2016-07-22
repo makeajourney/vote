@@ -44,7 +44,7 @@
     			article.content content,
     			article.hit_count hitCount,
     			article.create_date createDate,
-    			user.name username
+    			user.name userName
     		FROM
     			article, user
     		WHERE
@@ -59,7 +59,7 @@
     			article.title title,
     			article.hit_count hitCount,
     			article.create_date createDate,
-    			user.name username
+    			user.name userName
     		FROM
     			article, user
     		WHERE
@@ -95,7 +95,8 @@
     <select id="selectCommentsForArticle" parameterType="int" resultType="comment">
     	<![CDATA[
     		select 
-    			user.name username,
+    			user.no	userNo,
+    			user.name userName,
     			comment.context context, 
     			comment.update_date updateDate
     		from

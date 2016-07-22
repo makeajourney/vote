@@ -1,6 +1,6 @@
 package vote.com.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Article {
 	private int no;
@@ -12,7 +12,7 @@ public class Article {
 	private int userNo;
 	private boolean delete;
 	
-	private String username;
+	private String userName;
 	
 	public int getNo() {
 		return no;
@@ -70,11 +70,11 @@ public class Article {
 		this.delete = delete;
 		return this;
 	}
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
-	public Article setUser(String username) {
-		this.username = username;
+	public Article setUser(String userName) {
+		this.userName = userName;
 		return this;
 	}
 }

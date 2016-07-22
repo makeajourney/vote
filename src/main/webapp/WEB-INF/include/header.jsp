@@ -1,5 +1,3 @@
-<%@ page import="vote.com.vo.User" %>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -14,7 +12,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">vote your opinion</a>
+			<a class="navbar-brand" href="<c:url value='/main.do' />">vote your opinion</a>
 		</div>
 		
 		<ul class="nav navbar-nav">

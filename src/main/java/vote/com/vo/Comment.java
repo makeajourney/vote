@@ -6,7 +6,7 @@ public class Comment {
 	private int articleNo;
 	private int parentNo;
 	private int userNo;
-	private String username;
+	private String userName;
 	private String context;
 	private Date createDate;
 	private Date updateDate;
@@ -32,11 +32,11 @@ public class Comment {
 		this.userNo = userNo;
 		return this;
 	}
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
-	public Comment setUsername(String username) {
-		this.username = username;
+	public Comment setUserName(String userName) {
+		this.userName = userName;
 		return this;
 	}
 	public String getContext() {

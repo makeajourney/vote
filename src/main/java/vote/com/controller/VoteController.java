@@ -34,7 +34,7 @@ public class VoteController {
 	
 	@RequestMapping(value="/voteDetail.do")
 	public ModelAndView voteDetail(@RequestParam("articleno") int articleNo) {
-		ModelAndView mv = new ModelAndView("/vote");
+		ModelAndView mv = new ModelAndView("/votecontents");
 		Article article = voteService.getArticleDetail(articleNo);
 		ArrayList<Comment> comments = new ArrayList<Comment>();
 		comments = 	voteService.getComments(articleNo);
