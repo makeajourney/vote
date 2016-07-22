@@ -1,11 +1,11 @@
 package vote.com.service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.CookieGenerator;
 
 import vote.com.dao.VoteDao;
 import vote.com.vo.User;
@@ -18,31 +18,21 @@ public class LoginServiceImpl implements LoginService {
 	private VoteDao voteDao;
 
 	@Override
-	public boolean login(User user, HttpServletResponse response) {
+	public User login(User user, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		User getUser = voteDao.selectUser(user);
 		System.out.println(getUser.getId() + " " + getUser.getPassword());
 		
-		if (user.getPassword().equals(getUser.getPassword())) {
-			this.addCookie(getUser, response);			
-			return true;
+		if (user.getPassword().equals(getUser.getPassword())) {	
+			return getUser;
 		}
 		else
-			return false;
+			return null;
 	}
 
 	@Override
-	public void signup(User user, HttpServletResponse response) {
+	public User signup(User user, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		User signupUser = voteDao.addUser(user);
-		
-		this.addCookie(signupUser, response);
-	}
-	
-	private void addCookie(User user, HttpServletResponse response) {
-		CookieGenerator cg = new CookieGenerator();
-		
-		cg.setCookieName("vote_username");
-		cg.addCookie(response, user.getId());
+		return voteDao.addUser(user);
 	}
 }

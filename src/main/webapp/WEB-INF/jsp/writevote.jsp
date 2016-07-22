@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<%@ include file="/WEB-INF/include/head.jsp" %>
-		<link href="css/main.css" rel="stylesheet">
+		<link href="css/writevote.css" rel="stylesheet">
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/include/header.jsp" %>
@@ -17,45 +17,46 @@
 			
 			<!-- Main component for a primary marketing message or call to action -->
 			<div class="jumbotron">
-				
-				<div class="input-group">
-					<span class="input-group-addon" id="basic-addon1">Title</span>
-					<input type="text" class="form-control"  aria-describedby="basic-addon1">
-				</div>
-				<br/>
-				
-				<div class="form-group">
-					<textarea class="form-control" rows="5" id="comment"></textarea>
-				</div>
-				
-				<div class="col-xs-13" >
-					<input class="form-control" id="ex3" type="text" placeholder="tags">
-				</div>
-				
-				<br/>
-				
-				<div class="col-md-8 pull-left" id="addImgBtn">
+				<form>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Title</span>
+						<input type="text" name="title" class="form-control"  aria-describedby="basic-addon1">
+					</div>
+					<br/>
+					
+					<div class="form-group">
+						<textarea class="form-control" rows="5" id="comment" name="content"></textarea>
+					</div>
+					
+					<div class="col-xs-13" >
+						<input class="form-control" id="ex3" type="text" placeholder="tags" name="tags">
+					</div>
+					
+					<br/>
+					
+					<div class="col-md-8 pull-left" id="addImgBtn">
+						<p>
+							<a class="btn btn-lg btn-primary" href="#" role="button">add images &raquo;</a>
+						</p>
+					</div>
+					
 					<p>
-						<a class="btn btn-lg btn-primary" href="#" role="button">add images &raquo;</a>
+						<a class="btn btn-lg btn-primary pull-right" href="#" role="button" id="addVoElBtn">add vote element </a>
 					</p>
-				</div>
-				
-				<p>
-					<a class="btn btn-lg btn-primary pull-right" href="#" role="button" id="addVoElBtn">add vote element </a>
-				</p>
-				
-				<br/><br/><br/>
-				
-				<div class="modal-content">
-				  
-					<div class="modal-body" id="vote">
-						<input class="form-control" id="ex3" type="text" placeholder="1">
+					
+					<br/><br/><br/>
+					
+					<div class="modal-content">
+					  
+						<div class="modal-body" id="vote">
+							<input class="form-control" id="ex3" type="text" placeholder="1">
+						</div>
+						<div class="modal-footer" id="vote">
+							<input class="form-control" id="ex3" type="text" placeholder="2">
+						</div>
+					
 					</div>
-					<div class="modal-footer" id="vote">
-						<input class="form-control" id="ex3" type="text" placeholder="2">
-					</div>
-				
-				</div>
+				</form>
 			  
 			</div>
 			
@@ -64,7 +65,7 @@
 		<nav>
 		  <ul class="pager">
 		    <li><a >cancel</a></li>
-		    <li><a >upload</a></li>
+		    <li><a href="<c:url value='/writeVote.do' />">upload</a></li>
 		  </ul>
 		</nav>
 

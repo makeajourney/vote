@@ -6,8 +6,8 @@ import vote.com.vo.User;
 
 public interface LoginService {
 
-	boolean login(User user, HttpServletResponse response);
+	User login(User user, HttpServletResponse response);
 
-	void signup(User user, HttpServletResponse response);
+	User signup(User user, HttpServletResponse response);
 
 }

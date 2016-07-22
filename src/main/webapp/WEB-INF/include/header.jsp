@@ -1,3 +1,9 @@
+<%@ page import="vote.com.vo.User" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">	
@@ -20,11 +26,26 @@
 				<li><a href="<c:url value='/showWriteVoteWindow.do' />" id="new_vote">new vote</a></li>
 								
 				<li class="dropdown pull-right">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User name <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">My Profile</a></li>
-						<li><a href="#">My Article</a></li>           
-					</ul>
+				
+				
+					<c:choose>
+						<c:when test="${!empty user.name }">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								${user.name}
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">My Profile</a></li>
+								<li><a href="#">My Article</a></li>      
+								<li><a href="<c:url value='/logout.do' />">Logout</a></li>     
+							</ul>
+		                </c:when>
+						<c:otherwise>
+							<a href="<c:url value='/login.do' />" role="button" aria-haspopup="true" aria-expanded="false">
+								Login
+							</a>
+						</c:otherwise>
+					</c:choose>
 				</li>
 			</ul>
 		</div><!--/.nav-collapse -->

@@ -47,4 +47,7 @@ public class VoteController {
 	public ModelAndView showWriteWindow() {
 		return new ModelAndView("/writevote");
 	}
+	
+	//@RequestMapping(value="/writeVote.do" method=RequestMethod.POST)
+	
 }
