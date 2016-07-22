@@ -36,7 +36,7 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="#">My Profile</a></li>
-								<li><a href="#">My Article</a></li>      
+								<li><a href="<c:url value='/showMyVoteList.do' />" >My Article</a></li>      
 								<li><a href="<c:url value='/logout.do' />">Logout</a></li>     
 							</ul>
 		                </c:when>

@@ -35,6 +35,12 @@ public class VoteServiceImpl implements VoteService {
 		// TODO Auto-generated method stub
 		return voteDao.getCommentsForArticle(articleNo);
 	}
+
+	@Override
+	public ArrayList<Article> getMyArticleList(int userNo) {
+		// TODO Auto-generated method stub
+		return voteDao.getMyArticleList(userNo);
+	}
 	
 	
 }

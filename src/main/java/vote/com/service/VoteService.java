@@ -13,4 +13,6 @@ public interface VoteService {
 
 	ArrayList<Comment> getComments(int articleNo);
 
+	ArrayList<Article> getMyArticleList(int userNo);
+
 }

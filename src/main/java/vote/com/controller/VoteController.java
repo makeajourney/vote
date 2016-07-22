@@ -3,6 +3,7 @@ package vote.com.controller;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import vote.com.service.VoteService;
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
+import vote.com.vo.User;
 
 @Controller
 public class VoteController {
@@ -25,8 +27,7 @@ public class VoteController {
 	@RequestMapping(value="/main.do")
 	public ModelAndView mainPage() {
 		ModelAndView mv = new ModelAndView("/main");
-		ArrayList<Article> articleList = new ArrayList<Article>();
-		articleList = voteService.getArticleList();
+		ArrayList<Article> articleList =  voteService.getArticleList();
 		mv.addObject("articleList", articleList);		
 		return mv;
 	}
@@ -42,12 +43,25 @@ public class VoteController {
 		
 		return mv;
 	}
-	
+
 	@RequestMapping(value="/showWriteVoteWindow.do", method=RequestMethod.GET)
 	public ModelAndView showWriteWindow() {
 		return new ModelAndView("/writevote");
 	}
 	
+	// /showMyVoteList.do?userNo=${user.no}
+	@RequestMapping(value="/showMyVoteList.do") 
+	public ModelAndView showMyVoteList (HttpSession session) {
+		int userNo = ((User) session.getAttribute("user")).getNo();
+		ModelAndView mv = new ModelAndView("/myvote");
+		ArrayList<Article> myArticles = voteService.getMyArticleList(userNo);
+		mv.addObject("articleList", myArticles);
+		return mv;
+	}
+	
+	
 	//@RequestMapping(value="/writeVote.do" method=RequestMethod.POST)
+	
+	
 	
 }

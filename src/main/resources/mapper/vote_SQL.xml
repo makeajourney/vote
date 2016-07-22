@@ -68,6 +68,22 @@
     	]]>
     </select>
     
+    <select id="selectListOfMyArticles" parameterType="int" resultType="article">
+    	<![CDATA[
+	    	SELECT
+    			article.no no,
+    			article.title title,
+    			article.hit_count hitCount,
+    			article.create_date createDate
+    		FROM
+    			article, user
+    		WHERE
+    			user.no = #{userNo} and
+    			article.user_no = user.no
+    		ORDER BY create_date DESC
+    	]]>
+    </select>
+    
     <insert id="insertOneArticle" parameterType="article">
     	<![CDATA[
     		

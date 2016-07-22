@@ -39,4 +39,10 @@ public class VoteDao extends AbstractDAO{
 		// TODO Auto-generated method stub
 		return (ArrayList<Comment>) selectList("vote.selectCommentsForArticle", articleNo);
 	}
+
+	@SuppressWarnings("unchecked")
+	public ArrayList<Article> getMyArticleList(int userNo) {
+		// TODO Auto-generated method stub
+		return (ArrayList<Article>) selectList("vote.selectListOfMyArticles", userNo);
+	}
 }
