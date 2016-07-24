@@ -45,4 +45,8 @@ public class VoteDao extends AbstractDAO{
 		// TODO Auto-generated method stub
 		return (ArrayList<Article>) selectList("vote.selectListOfMyArticles", userNo);
 	}
+	
+	public void updatehitcount(int articleNo) {
+		update("vote.updateHitCount", articleNo);
+	}
 }

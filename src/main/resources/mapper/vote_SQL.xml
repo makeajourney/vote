@@ -90,6 +90,16 @@
     	]]>
     </insert>
     
+    <update id="updateHitCount" parameterType="int">
+	    <![CDATA[
+	        UPDATE article 
+	        SET
+	            hit_count = IFNULL(hit_count, 0) + 1
+	        WHERE
+	            no = #{articleNo}    
+	    ]]>
+	</update>
+	
     <!-- comment -->
     
     <select id="selectCommentsForArticle" parameterType="int" resultType="comment">
