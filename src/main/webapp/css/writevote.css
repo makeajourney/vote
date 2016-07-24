@@ -11,6 +11,7 @@
 
 #comment {
   height: 400px;
+  width: 100%;
 }
 
 #tags {
@@ -37,3 +38,74 @@
   background-color: #5cb85c;
   border-color: #5cb85c;
 }
+
+.col-md-4 {
+  padding-right: 0px;
+}
+.col-md-8 {
+  padding-left: 0px;
+}
+
+
+
+
+
+.jumbotron p{
+  margin-bottom: 0px;
+}
+div.jumbotron {
+  padding-bottom: 1px;
+}
+
+.filebox label {
+  display: inline-block;
+  /*padding: .5em .75em;*/
+  padding: 13px;
+
+  color: white;
+  font-size: 18px;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #337ab7;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: 6px;
+}
+
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+  height: 18px;
+}
+
+.btn-block {
+  display: inline;
+  width: 110px;
+  text-align: center;
+
+}
+
+
+.form-control {
+  display: inline;
+  width: 940px;
+  margin-right: 10px;
+}
+
+#ex3 {
+  width: 100%;
+}
+
+.open-icon {
+  border-radius: 600px;
+  border: 1px solid #eee;
+  color: #666699;
+}
+

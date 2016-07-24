@@ -12,63 +12,65 @@
 	<body>
 		<%@ include file="/WEB-INF/include/header.jsp" %>
 				
-		
 		<div class="container">
-			
-			<!-- Main component for a primary marketing message or call to action -->
-			<div class="jumbotron">
-				<form>
+			<form action="login.do" method="post" onsubmit="return chkformLogin();">
+				<!-- Main component for a primary marketing message or call to action -->
+				<div class="jumbotron">
+				
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">Title</span>
-						<input type="text" name="title" class="form-control"  aria-describedby="basic-addon1">
+						<input type="text" class="form-control"  aria-describedby="basic-addon1" id="T"/>
 					</div>
 					<br/>
 					
 					<div class="form-group">
-						<textarea class="form-control" rows="5" id="comment" name="content"></textarea>
+						<textarea class="form-control" rows="5" id="comment" ></textarea>
 					</div>
 					
 					<div class="col-xs-13" >
-						<input class="form-control" id="ex3" type="text" placeholder="tags" name="tags">
+						<input class="form-control" id="ex3" type="text" placeholder="tags" />
 					</div>
-					
 					<br/>
 					
 					<div class="col-md-8 pull-left" id="addImgBtn">
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">add images &raquo;</a>
-						</p>
+						<!--<a class="btn btn-lg btn-primary" href="#" role="button">add images &raquo;</a>-->
+						<div class="filebox col-md-8">
+							<label for="ex_file">add images &raquo;</label>
+							<input type="file" id="ex_file"/> 
+						</div>
 					</div>
 					
-					<p>
-						<a class="btn btn-lg btn-primary pull-right" href="#" role="button" id="addVoElBtn">add vote element </a>
-					</p>
+					<div class="col-md-4" >
+					    <p>
+							<a class="btn btn-lg btn-primary pull-right"  role="button" id="addVoElBtn">add vote element </a>
+					    </p>
+					</div>
+					<br/><br/><br/><br/>
 					
-					<br/><br/><br/>
+					<label id="123">total 2</label>
 					
-					<div class="modal-content">
-					  
+					<div class="modal-content" id="modalContent">
+					
 						<div class="modal-body" id="vote">
-							<input class="form-control" id="ex3" type="text" placeholder="1">
+							<input class="form-control" id="ex5" type="text" />
 						</div>
+					    
 						<div class="modal-footer" id="vote">
-							<input class="form-control" id="ex3" type="text" placeholder="2">
+							<input class="form-control" id="ex6" type="text" />
 						</div>
-					
 					</div>
+					 
+					<nav>
+						<ul class="pager">
+							<li><button class="btn btn-lg btn-primary btn-block">cancel</button></li>
+							<li><button class="btn btn-lg btn-primary btn-block" type="submit" id="confirmBtn" >upload</button></li>
+						</ul>
+					</nav>
 				</form>
-			  
 			</div>
-			
 		</div> <!-- /container -->
 		
-		<nav>
-		  <ul class="pager">
-		    <li><a >cancel</a></li>
-		    <li><a href="<c:url value='/writeVote.do' />">upload</a></li>
-		  </ul>
-		</nav>
-
 		<%@ include file="/WEB-INF/include/footer.jsp" %>
+		<script src="js/writevote.js"></script>
 	</body>
 </html>

@@ -46,14 +46,11 @@
 				</div>
 			</div>
 			<div class="comment">
-	    		<form class="commentform" action="">
-	    			<input type="checkbox" class="checked"> suggest the vote element</input>
-	    			<input type="text" class="sgbox" placeholder=" vote element"/><br>
-					<input type="text" class="cbox"/>
-					<button type="submit" class="cbtn">Submit</button>
-	    		</form>
+	    			<input type="checkbox" class="checked" id="checked"> suggest the vote element </input>
+	    			<input type="text" id="sgbox" name="voteElement" class="sgbox" placeholder=" vote element"/><br>
+					<input type="text" id="cbox" name="comment" class="cbox"/>
+					<button type="button" class="cbtn" onclick="chkformComment();">Submit</button>
 	    	</div>
-	    	
 	    	<c:choose>
 				<c:when test="${fn:length(comments) > 0}">
 					<c:forEach items="${comments }" var="comment">
