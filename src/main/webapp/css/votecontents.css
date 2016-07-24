@@ -1,118 +1,206 @@
-        .main {
-            border: 2px solid black;
-            padding: 10px;
-        }
-        .comment {
-            border: 2px solid black;
-            padding: 15px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        .comment2 {
-            border: 2px solid black;
-            padding: 15px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            font-size: 17px;
-            height: 150px;
-        }
-        span.name {
-            text-align: right;
-            font-size: 15px;
-        }
-        div.date {
-            text-align: right;
-            font-size: 15px;
-        }
-        div.tags {
-            border-radius: 25px;
-            border: 2px solid black;
-            padding: 20px;
-            margin:4px 2px;
-            height: 70px;
-            font-size:20px;
-            text-align: center;
-        }
-        .item {
-            position: relative;
-            height: 45px;
-            background-color:#FFDFDF;
-            color: black;
-            margin: 4px 2px;
-            text-align: center;
-            font-size: 15px;
-            border: 2px solid black;
-        }
-        .votebtn{
-            position: relative;
-            height: 45px;
-            background-color:white;
-            color: black;
-            margin: 4px 2px;
-            padding: 0 530px 0 530px;
-            text-align: center;
-            font-size: 15px;
-            border: 2px solid black;
-        }
-        .item1 {
-            background-color:#FCA7A7;
-            position: absolute;
-            width: 1.53%;
-            height: 100%
-            
-        }
-        .itemnum {
-            text-align: right;
-            margin: 8px 15px;
-        }
 
-        .item2 {
-            width: 18.97%;
-            background-color:#FCA7A7;
-            position: absolute;
-            height: 100%
-        }
-        .item3 {
-            width: 65.13%;
-            background-color:#FCA7A7;
-            position: absolute;
-            height: 100%
-        }
-        .item4 {
-            width: 14.36%;
-            background-color:#FCA7A7;
-            position: absolute;
-            height: 100%
-        }
+.outer {
+    margin-bottom: 10px;
+}
 
-        .sgbox {
-            width: 820px;
-            display: none;
-        }
-        .cbox {
-            margin-top: 10px;
-            width: 1002px;
-            height: 80px;
-        }
-        .cbtn {
-            margin: 10px;
-            height: 80px;
-            width: 80px;
-            background-color: #286090;
-            border-radius: 6px;
-            color:white;
-        }
-        .cbtn2 {
-            background-color: white;
-            color: blue;
-        }
-        .cbtn3 {
-            margin-bottom: 5px;
-            float:right;
+.listbtn {
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+}
 
-        }
-        .sgitem {
-            border: 2px solid;
-            padding: 5px 40px 5px 40px;
-            margin-left: 10px;
-        }
+.outerbtn {
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+}
+
+.outerbtn {
+    float: right;
+}
+
+.main {
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.comment {
+    border: 2px solid black;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.comment2 {
+    border: 2px solid black;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.name {
+    float: right;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.date {
+    text-align: right;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.img {
+    max-width: 100%;
+}
+
+div.tags {
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 20px;
+    margin:4px 2px;
+    height: 70px;
+    font-size:20px;
+    text-align: center;
+}
+
+.item {
+    position: relative;
+    height: 45px;
+    background-color:#FCFED1;
+    color: black;
+    margin: 4px 2px;
+    text-align: left;
+    font-size: 15px;
+    border: 2px solid black;
+}
+
+.chooseitem {
+    position: relative;
+    height: 45px;
+    background-color:#FFDFDF;
+    color: black;
+    margin: 4px 2px;
+    text-align: left;
+    font-size: 15px;
+    border: 2px solid black;
+}
+
+.votebtn{
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background-color:red;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    border: 2px solid black;
+}
+
+.item1 {
+    background-color:#F8FD9B;
+    position: absolute;
+    width: 1.53%;
+    height: 100%;
+}
+
+.label {
+    float: left;
+    line-height: 30px;
+    color: black;
+    font-size: 17px;
+}
+
+.itemnum {
+    text-align: right;
+    margin: 8px 15px;
+}
+
+.item2 {
+    width: 18.97%;
+    background-color:#FCA7A7;
+    position: absolute;
+    height: 100%
+}
+
+.item3 {
+    width: 65.13%;
+    background-color:#F8FD9B;
+    position: absolute;
+    height: 100%
+}
+
+.item4 {
+    width: 14.36%;
+    background-color:#F8FD9B;
+    position: absolute;
+    height: 100%
+}
+
+.sgbox {
+    width: 72%;
+    display: none;
+}
+
+.cbox {
+    margin-top: 10px;
+    width: 88.5%;
+    height: 80px;
+}
+
+.cbtn {
+    float: right;
+    margin-right: 15px;
+    margin-top: 9px;
+    height: 80px;
+    width: 78px;
+    background-color: #286090;
+    border-radius: 6px;
+    color:white;
+}
+
+.username {
+    font-size: 20px;
+}
+
+.cdate {
+    text-align: right;
+    font-size: 15px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.likebtn {
+    background-color: white;
+    color: #020094;
+    border: 2px solid white;
+}
+
+.cbtn2 {
+    background-color: white;
+    color: blue;
+    border: 2px solid white;
+}
+
+.cbtn3 {
+    margin-bottom: 5px;
+    float:right;
+}
+
+.sgitem {
+    border: 2px solid;
+    padding: 5px 40px 5px 40px;
+    margin-left: 10px;
+}
+
+.nosgitem {
+    padding: 5px 40px 5px 40px;
+    margin-left: 10px;
+}
+
+.edittext {
+    display: none;
+    width: 88.5%;
+}
