@@ -19,7 +19,7 @@
 					<div class="cbtn3">
 						<button class="outerbtn linkbtn">link</button>
 						<c:if test="${article.userNo eq user.no}">
-							<button class="outerbtn deletebtn" >delete</button>
+							<button class="outerbtn deletebtn" onclick='location.href="<c:url value='/deleteVote.do?articleno=${article.no }' />"'>delete</button>
 							<button class="outerbtn upbtn">update</button>
 						</c:if>
 					</div>
