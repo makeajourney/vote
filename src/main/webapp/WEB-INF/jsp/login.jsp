@@ -39,6 +39,17 @@
 				<button id="loginToggle" class="btn btn-lg btn-primary btn-block2" type="button">Sign In</button>
 			</div> 
 		</div> <!-- /container -->
+		
+		<!-- facebook test -->
+		
+		<div
+		  class="fb-like"
+		  data-share="true"
+		  data-width="450"
+		  data-show-faces="true">
+		</div>
+
+
 
 		<%@ include file="/WEB-INF/include/footer.jsp" %>
 		<script src="js/login.js"></script>
