@@ -3,6 +3,7 @@ package vote.com.controller;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -62,15 +63,14 @@ public class VoteController {
 			@RequestParam("title") String title, 
 			@RequestParam("content") String content,
 			@RequestParam("voteElement") String voteElements,
-			HttpSession session) {
+			HttpServletRequest request,
+			HttpSession session) throws Exception {
 		User user = (User) session.getAttribute("user");
 				
 		int articleNo = voteService.addArticle(
 				new Article().setTitle(title)
 					.setContent(content)
-					.setUserNo(user.getNo()));
-
-		voteService.addVoteElement(voteElements);
+					.setUserNo(user.getNo()), voteElements, request);
 		
 		return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);	
 	}

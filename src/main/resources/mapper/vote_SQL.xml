@@ -151,6 +151,31 @@
 		]]>
 	</update>
 	
+	<!-- file -->
+	
+	<insert id="insertFile" parameterType="voteFile">
+		<![CDATA[
+			INSERT INTO vote_file
+			(
+				article_no,
+				original_file_name,
+				stored_file_name,
+				file_size,
+				create_date,
+				delete_field
+			)
+			VALUES
+			(
+				#{articleNo}, 
+				#{originalFileName},
+				#{storedFileName},
+				#{fileSize},
+				now(),
+				0
+			)
+		]]>
+	</insert>
+	
 	<!-- voteElement -->
 	<insert id="insertVoteElement" parameterType="voteElement">
 		<![CDATA[

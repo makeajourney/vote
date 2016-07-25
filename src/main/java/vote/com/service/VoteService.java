@@ -2,6 +2,8 @@ package vote.com.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
 import vote.com.vo.User;
@@ -17,13 +19,11 @@ public interface VoteService {
 
 	ArrayList<Article> getMyArticleList(int userNo);
 
-	int addArticle(Article article);
+	int addArticle(Article article, String voteElements, HttpServletRequest request) throws Exception;
 
 	void addComment(Comment comment);
 
 	void deleteArticle(User user, int articleNo);
-
-	void addVoteElement(String voteElements);
 
 	ArrayList<VoteElement> getVoteElements(int articleNo);
 

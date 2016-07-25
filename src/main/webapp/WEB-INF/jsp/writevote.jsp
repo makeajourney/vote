@@ -14,7 +14,7 @@
 		<%@ include file="/WEB-INF/include/header.jsp" %>
 
 		<div class="container">
-			<form action="writeVote.do" method="post" onsubmit="return chkformWriteVote();">
+			<form action="writeVote.do" method="post" enctype="multipart/form-data" onsubmit="return chkformWriteVote();">
 				<!-- Main component for a primary marketing message or call to action -->
 				<div class="jumbotron">
 
@@ -37,7 +37,7 @@
 						<!--<a class="btn btn-lg btn-primary" href="#" role="button">add images &raquo;</a>-->
 						<div class="filebox col-md-8">
 							<label for="ex_file">add images &raquo;</label>
-							<input type="file" id="ex_file"/>
+							<input type="file" id="ex_file" name="file"/>
 						</div>
 					</div>
 

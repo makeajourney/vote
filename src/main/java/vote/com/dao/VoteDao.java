@@ -8,6 +8,7 @@ import vote.com.vo.Article;
 import vote.com.vo.Comment;
 import vote.com.vo.User;
 import vote.com.vo.VoteElement;
+import vote.com.vo.VoteFile;
 import vote.common.dao.AbstractDAO;
 
 @Repository
@@ -95,5 +96,10 @@ public class VoteDao extends AbstractDAO{
 	public void deleteComment(int commentNo) {
 		// TODO Auto-generated method stub
 		update("vote.deleteComment", commentNo);
+	}
+
+	public void insertFile(VoteFile voteFile) {
+		// TODO Auto-generated method stub
+		insert("vote.insertFile", voteFile);
 	}
 }

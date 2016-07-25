@@ -23,6 +23,7 @@
         <typeAlias type="vote.com.vo.VoteElement" alias="voteElement" />
         <typeAlias type="vote.com.vo.Tag" alias="tag" />
         <typeAlias type="vote.com.vo.Comment" alias="comment" />
+        <typeAlias type="vote.com.vo.VoteFile" alias="voteFile" />
         
         <!-- TODO END: VO Setting -->
 	</typeAliases>
