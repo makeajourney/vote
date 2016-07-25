@@ -43,6 +43,7 @@
 					<p><a>#expensive</a> <a>#car</a> <a>#please</a> <a>#choose</a> <a>#one</a></p>
 				</div>
 				
+				<!-- 투표항목 조회 테스트용 코드 -->
 				<p>vote element test</p>
 				
 				
@@ -56,7 +57,7 @@
 						<p>입력된 댓글이 없습니다.</p>
 					</c:otherwise>
 				</c:choose>
-				
+				<!-- 투표항목 조회 테스트용 코드 끝 -->
 				
 				
 				<div class="vote">
@@ -123,7 +124,9 @@
 
 								<div class="cbtn3">
 									<button class="cbtn2 edit">edit</button>
-									<button class="cbtn2 delete">delete</button>
+									<button class="cbtn2 delete" onclick='location.href="<c:url value='/deleteComment.do?articleno=${article.no }&commentno=${comment.no }' />"'>
+										delete
+									</button>
 								</div>
 							</c:if>
 						</div>

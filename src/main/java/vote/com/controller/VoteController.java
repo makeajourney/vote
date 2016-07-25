@@ -119,5 +119,16 @@ public class VoteController {
 		return new ModelAndView("redirect:/main.do");
 	}
 	
+	@RequestMapping(value="/deleteComment.do")
+	public ModelAndView deleteComment (
+			@RequestParam("commentno") int commentNo,
+			@RequestParam("articleno") int articleNo,
+			HttpSession session) {
+		User user = ((User) session.getAttribute("user"));
+		
+		voteService.deleteComment(user, commentNo);
+		
+		return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);
+	}
 	
 }

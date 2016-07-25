@@ -91,4 +91,12 @@ public class VoteServiceImpl implements VoteService {
 		return (ArrayList<VoteElement>) voteDao.getVoteElement(articleNo);
 	}
 
+	@Override
+	public void deleteComment(User user, int commentNo) {
+		// TODO Auto-generated method stub
+		if (user.getNo() == voteDao.getUserNoToComment(commentNo)) {
+			voteDao.deleteComment(commentNo);
+		}
+	}
+
 }

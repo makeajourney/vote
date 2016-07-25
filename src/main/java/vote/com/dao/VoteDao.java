@@ -86,4 +86,14 @@ public class VoteDao extends AbstractDAO{
 		// TODO Auto-generated method stub
 		return (ArrayList<VoteElement>) selectList("vote.selectVoteElementsByArticle", articleNo);
 	}
+
+	public int getUserNoToComment(int commentNo) {
+		// TODO Auto-generated method stub
+		return (int) selectOne("vote.selectUserNoToSingleComment", commentNo);
+	}
+
+	public void deleteComment(int commentNo) {
+		// TODO Auto-generated method stub
+		update("vote.deleteComment", commentNo);
+	}
 }

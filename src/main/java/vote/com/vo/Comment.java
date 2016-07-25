@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Comment {
 	private int articleNo;
+	private int no;
 	private int parentNo;
 	private int userNo;
 	private String userName;
@@ -16,6 +17,13 @@ public class Comment {
 	}
 	public Comment setArticleNo(int articleNo) {
 		this.articleNo = articleNo;
+		return this;
+	}
+	public int getNo() {
+		return no;
+	}
+	public Comment setNo(int no) {
+		this.no = no;
 		return this;
 	}
 	public int getParentNo() {

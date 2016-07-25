@@ -192,6 +192,7 @@
     		SELECT 
     			user.no	userNo,
     			user.name userName,
+    			comment.no no,
     			comment.context context, 
     			comment.update_date updateDate
     		FROM
@@ -202,6 +203,17 @@
     			user.no = comment.user_no and
     			comment.delete_field = 0
     		ORDER BY create_date ASC
+    	]]>
+    </select>
+    
+    <select id="selectUserNoToSingleComment" parameterType="int" resultType="int">
+    	<![CDATA[
+    		SELECT
+    			user_no
+    		FROM
+    			comment
+    		WHERE
+    			no = #{commentNo}
     	]]>
     </select>
     

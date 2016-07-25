@@ -27,4 +27,6 @@ public interface VoteService {
 
 	ArrayList<VoteElement> getVoteElements(int articleNo);
 
+	void deleteComment(User user, int commentNo);
+
 }
