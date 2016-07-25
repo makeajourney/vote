@@ -49,4 +49,19 @@ public class VoteDao extends AbstractDAO{
 	public void updatehitcount(int articleNo) {
 		update("vote.updateHitCount", articleNo);
 	}
+
+	public void addArticle(Article article) {
+		// TODO Auto-generated method stub
+		insert("vote.insertOneArticle", article);
+	}
+
+	public int getArticleNo() {
+		// TODO Auto-generated method stub
+		return (int) selectOne("vote.getRecentArticleNo");
+	}
+
+	public void addComment(Comment comment) {
+		// TODO Auto-generated method stub
+		insert("vote.addComment", comment);
+	}
 }

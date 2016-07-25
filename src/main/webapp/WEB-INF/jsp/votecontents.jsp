@@ -33,9 +33,9 @@
 						<div class="name">${article.userName}</div>
 					</div>
 				</div>
-				<p class="img">
+				<div class="img">
 					<img src="http://imgnews.naver.net/image/215/2015/08/21/A201508210041_1_99_20150821103503.jpg?type=w540"/>
-				</p>
+				</div>
 				<p class="lead">
 					${article.content }
 				</p>
@@ -76,11 +76,12 @@
 				</div>
 			</div>
 			<div class="comment">
-				<form class="commentform" action="contents.do" method="post" onsubmit="return chkformComment()">
+				<form class="commentform" action="addComment.do" method="post" onsubmit="return chkformComment();">
+					<input type="hidden" name="articleno" value="${article.no }" />
 					<input type="checkbox" class="checked" id="checked" /> suggest the vote element
 					<input type="text" id="sgbox" class="sgbox" placeholder=" vote element"/><br>
 					<div class="box">
-						<input type="text" id="cbox" class="cbox"/>
+						<input type="text" name="context" id="cbox" class="cbox"/>
 						<button type="submit" class="cbtn">Submit</button>
 					</div>
 				</form>
@@ -96,7 +97,11 @@
 							</div>
 							<div>
 								<p>${comment.context }</p>
+								<div>
+									<input type="text" class="edittext"/>
+								</div>
 							</div>
+
 							<c:if test="${comment.userNo eq user.no}">
 
 								<div class="cbtn3">
@@ -120,17 +125,17 @@
 				<div>
 					Suggest the vote element
 					<span class="sgitem">Chrysler</span>
-					<div class="cbtn3">
-						<button class="cbtn2 edit">edit</button>
-						<button class="cbtn2 delete">delete</button>
-					</div>
+				</div>
+				<div class="cbtn3">
+					<button class="cbtn2 edit">edit</button>
+					<button class="cbtn2 delete">delete</button>
 				</div>
 			</div>
 		</div>
 		<div>
 			<button class="listbtn" onclick='location.href="<c:url value='/main.do' />"'> &lt; list</button>
-			<div class="cbtn3">
-				<a href="#" style="color:black;">top</a>
+			<div class="topbtn">
+				<a href="#">top</a>
 			</div>
 		</div>
 	</div>

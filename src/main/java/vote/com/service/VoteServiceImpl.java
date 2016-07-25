@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import vote.com.dao.VoteDao;
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
-import vote.com.vo.User;
 
 @Service("voteService")
 public class VoteServiceImpl implements VoteService {
@@ -42,5 +41,20 @@ public class VoteServiceImpl implements VoteService {
 	public ArrayList<Article> getMyArticleList(int userNo) {
 		// TODO Auto-generated method stub
 		return voteDao.getMyArticleList(userNo);
-	}	
+	}
+
+	@Override
+	public int addArticle(Article article) {
+		// TODO Auto-generated method stub
+		voteDao.addArticle(article);
+		
+		return voteDao.getArticleNo();
+	}
+
+	@Override
+	public void addComment(Comment comment) {
+		// TODO Auto-generated method stub
+		voteDao.addComment(comment);
+	}
+
 }

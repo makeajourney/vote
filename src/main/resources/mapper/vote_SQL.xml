@@ -86,9 +86,32 @@
     
     <insert id="insertOneArticle" parameterType="article">
     	<![CDATA[
-    		
+    		INSERT INTO article 
+    		(
+    			title, 
+    			content,
+    			hit_count,
+    			create_date,
+    			update_date, 
+    			user_no
+    		)
+    		values
+    		(
+    			#{title},
+    			#{content},
+    			0,
+    			NOW(),
+    			NOW(),
+    			#{userNo}
+    		)
     	]]>
     </insert>
+    
+    <select id="getRecentArticleNo" resultType="int">
+    	<![CDATA[
+    		SELECT MAX(no) FROM article
+    	]]>
+    </select>
     
     <update id="updateHitCount" parameterType="int">
 	    <![CDATA[
@@ -104,18 +127,39 @@
     
     <select id="selectCommentsForArticle" parameterType="int" resultType="comment">
     	<![CDATA[
-    		select 
+    		SELECT 
     			user.no	userNo,
     			user.name userName,
     			comment.context context, 
     			comment.update_date updateDate
-    		from
+    		FROM
     			comment, 
     			user 
-    		where
+    		WHERE
     			article_no = #{articleNo} and 
     			user.no = comment.user_no
-    		order by create_date ASC
+    		ORDER BY create_date ASC
     	]]>
-    </select> 
+    </select>
+    
+    <insert id="addComment" parameterType="comment">
+    	<![CDATA[
+    		INSERT INTO comment
+    		(
+				article_no,
+				user_no,
+				context,
+				create_date,
+				update_date
+			)
+			values
+			(
+				#{articleNo},
+				#{userNo},
+				#{context},
+				now(),
+				now()
+			);
+    	]]>
+    </insert>
 </mapper>

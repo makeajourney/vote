@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 	<head>
 		<%@ include file="/WEB-INF/include/head.jsp" %>
@@ -14,18 +14,18 @@
 		<%@ include file="/WEB-INF/include/header.jsp" %>
 
 		<div class="container">
-			<form action="login.do" method="post" onsubmit="return chkformLogin();">
+			<form action="writeVote.do" method="post" onsubmit="return chkformWriteVote();">
 				<!-- Main component for a primary marketing message or call to action -->
 				<div class="jumbotron">
 
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">Title</span>
-						<input type="text" class="form-control"  aria-describedby="basic-addon1" id="T"/>
+						<input type="text" name="title" class="form-control"  aria-describedby="basic-addon1" id="T"/>
 					</div>
 					<br/>
 
 					<div class="form-group">
-						<textarea class="form-control" rows="5" id="comment" ></textarea>
+						<textarea class="form-control" name="content" rows="5" id="comment" ></textarea>
 					</div>
 
 					<div class="col-xs-13" >
@@ -34,7 +34,7 @@
 					<br/>
 
 					<div class="col-md-8 pull-left" id="addImgBtn">
-					<!--<a class="btn btn-lg btn-primary" href="#" role="button">add images &raquo;</a>-->
+						<!--<a class="btn btn-lg btn-primary" href="#" role="button">add images &raquo;</a>-->
 						<div class="filebox col-md-8">
 							<label for="ex_file">add images &raquo;</label>
 							<input type="file" id="ex_file"/>
@@ -67,8 +67,8 @@
 							<li><button class="btn btn-lg btn-primary btn-block" type="submit" id="confirmBtn" >upload</button></li>
 						</ul>
 					</nav>
-				</form>
-			</div>
+				</div>
+			</form>
 		</div> <!-- /container -->
 
 		<%@ include file="/WEB-INF/include/footer.jsp" %>

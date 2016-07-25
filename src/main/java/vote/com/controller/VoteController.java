@@ -44,12 +44,29 @@ public class VoteController {
 		return mv;
 	}
 
-	@RequestMapping(value="/showWriteVoteWindow.do", method=RequestMethod.GET)
-	public ModelAndView showWriteWindow() {
-		return new ModelAndView("/writevote");
+	@RequestMapping(value="/writeVote.do", method=RequestMethod.GET)
+	public ModelAndView showWriteWindow(HttpSession session) {
+		if (((User) session.getAttribute("user")) != null ){
+			return new ModelAndView("/writevote");
+		} else {
+			return new ModelAndView("redirect:/login.do");
+		}
 	}
 	
-	// /showMyVoteList.do?userNo=${user.no}
+	@RequestMapping(value="/writeVote.do", method=RequestMethod.POST)
+	public ModelAndView addArticle(
+			@RequestParam("title") String title, 
+			@RequestParam("content") String content,
+			HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		int articleNo = voteService.addArticle(
+				new Article().setTitle(title)
+					.setContent(content)
+					.setUserNo(user.getNo()));
+		
+		return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);	
+	}
+	
 	@RequestMapping(value="/showMyVoteList.do") 
 	public ModelAndView showMyVoteList (HttpSession session) {
 		int userNo = ((User) session.getAttribute("user")).getNo();
@@ -59,9 +76,40 @@ public class VoteController {
 		return mv;
 	}
 	
+	@RequestMapping("/addComment.do")
+	public ModelAndView addComment(
+			@RequestParam("context") String commentContext,
+			@RequestParam("articleno") int articleNo,
+			HttpSession session) {
+		User user = ((User) session.getAttribute("user"));
+
+		if (user != null) {
+			voteService.addComment(new Comment()
+					.setArticleNo(articleNo)
+					.setContext(commentContext)
+					.setUserNo(user.getNo()));
+			
+			return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);
+		} else {
+			return new ModelAndView("redirect:/login.do");
+		}
+	}
 	
-	//@RequestMapping(value="/writeVote.do" method=RequestMethod.POST)
-	
+	@RequestMapping(value="/deleteVote.do")
+	public ModelAndView deleteMyVote(
+			@RequestParam("articleno") int articleNo,
+			HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		// 삭제구문 
+//		if (voteService.deleteVote(articleNo, user)) {
+//			return new ModelAndView("redirect:/main.do");
+//		}
+//		else {
+//			return new ModelAndView("");
+//		}
+		
+		return null;
+	}
 	
 	
 }

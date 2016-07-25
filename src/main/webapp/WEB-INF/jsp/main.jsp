@@ -30,7 +30,7 @@
 		                        <tr>
 		                            <td>${article.no}</td>
 		                            <td class="title">
-		                                <a href="<c:url value='/voteDetail.do?articleno=${article.no }' />" name="title">
+		                                <a href="<c:url value='/voteDetail.do?articleno=${article.no }' />">
 		                                	${article.title }
 		                                </a>
 		                            </td>

@@ -4,21 +4,22 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                         http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
     
-    <!-- 
+	<!-- server -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://211.234.68.137/vote"/>
         <property name="username" value="root"/>
         <property name="password" value="admin"/>
     </bean>
-     -->
-     
+    
+     <!-- local
      <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost/vote"/>
         <property name="username" value="root"/>
         <property name="password" value="admin"/>
     </bean> 
+      -->
     
     
 </beans>

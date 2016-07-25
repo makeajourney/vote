@@ -2,11 +2,9 @@
   width:300px;
 }
 
-
 #title {
   width:80px;
-  margin-bottom:0px; 
-
+  margin-bottom:0px;
 }
 
 #comment {
@@ -25,6 +23,7 @@
 #vote {
   text-align: left;
 }
+
 .nav-pills {
   background-color: #eee;
   border:none;
@@ -45,10 +44,6 @@
 .col-md-8 {
   padding-left: 0px;
 }
-
-
-
-
 
 .jumbotron p{
   margin-bottom: 0px;
@@ -92,7 +87,6 @@ div.jumbotron {
 
 }
 
-
 .form-control {
   display: inline;
   width: 940px;
@@ -108,4 +102,3 @@ div.jumbotron {
   border: 1px solid #eee;
   color: #666699;
 }
-

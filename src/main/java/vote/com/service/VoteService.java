@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
-import vote.com.vo.User;
 
 public interface VoteService {
 
@@ -15,5 +14,9 @@ public interface VoteService {
 	ArrayList<Comment> getComments(int articleNo);
 
 	ArrayList<Article> getMyArticleList(int userNo);
+
+	int addArticle(Article article);
+
+	void addComment(Comment comment);
 
 }

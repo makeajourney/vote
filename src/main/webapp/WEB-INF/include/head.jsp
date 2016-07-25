@@ -11,6 +11,7 @@
 <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
+
 <!-- for footer -->
 <link href="http://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
 

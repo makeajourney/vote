@@ -21,7 +21,7 @@
 		
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav  navbar-right">	
-				<li><a href="<c:url value='/showWriteVoteWindow.do' />" id="new_vote">new vote</a></li>
+				<li><a href="<c:url value='/writeVote.do' />" id="new_vote">new vote</a></li>
 								
 				<li class="dropdown pull-right">
 				
