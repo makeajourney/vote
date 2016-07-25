@@ -114,7 +114,7 @@
     	]]>
     </insert>
     
-    <select id="getRecentArticleNo" resultType="int">
+    <select id="getLatestArticleNo" resultType="int">
     	<![CDATA[
     		SELECT MAX(no) FROM article
     	]]>
@@ -151,6 +151,40 @@
 		]]>
 	</update>
 	
+	<!-- voteElement -->
+	<insert id="insertVoteElement" parameterType="voteElement">
+		<![CDATA[
+			INSERT INTO
+				vote_element
+			(
+				article_no,
+				no,
+				content
+			)
+			VALUES
+			(
+				#{articleNo},
+				#{no},
+				#{content}
+			)
+		]]>
+	</insert>
+	
+	<select id="selectVoteElementsByArticle" parameterType="int" resultType="voteElement">
+		<![CDATA[
+			SELECT
+				article_no articleNo,
+				no no,
+				content content
+			FROM
+				vote_element
+			WHERE
+				article_no = #{articleNo}
+			ORDER BY no ASC
+		]]>
+	</select>
+    
+    
     <!-- comment -->
     
     <select id="selectCommentsForArticle" parameterType="int" resultType="comment">

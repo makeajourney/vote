@@ -53,11 +53,11 @@
 					<div class="modal-content" id="modalContent">
 
 						<div class="modal-body" id="vote">
-							<input class="form-control" id="ex5" type="text" />
+							<input class="form-control" id="ex5" type="text" name="voteElement"/>
 						</div>
 
 						<div class="modal-footer" id="vote">
-							<input class="form-control" id="ex6" type="text" />
+							<input class="form-control" id="ex6" type="text" name="voteElement"/>
 						</div>
 					</div>
 

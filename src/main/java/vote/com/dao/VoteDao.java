@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
 import vote.com.vo.User;
+import vote.com.vo.VoteElement;
 import vote.common.dao.AbstractDAO;
 
 @Repository
@@ -55,9 +56,9 @@ public class VoteDao extends AbstractDAO{
 		insert("vote.insertOneArticle", article);
 	}
 
-	public int getArticleNo() {
+	public int getLatestArticleNo() {
 		// TODO Auto-generated method stub
-		return (int) selectOne("vote.getRecentArticleNo");
+		return (int) selectOne("vote.getLatestArticleNo");
 	}
 
 	public void addComment(Comment comment) {
@@ -73,5 +74,16 @@ public class VoteDao extends AbstractDAO{
 	public void deleteArticle(int articleNo) {
 		// TODO Auto-generated method stub
 		update("vote.deleteOneArticle", articleNo);
+	}
+
+	public void addVoteElement(VoteElement voteElement) {
+		// TODO Auto-generated method stub
+		insert("vote.insertVoteElement", voteElement);
+	}
+
+	@SuppressWarnings("unchecked")
+	public ArrayList<VoteElement> getVoteElement(int articleNo) {
+		// TODO Auto-generated method stub
+		return (ArrayList<VoteElement>) selectList("vote.selectVoteElementsByArticle", articleNo);
 	}
 }

@@ -16,6 +16,7 @@ import vote.com.service.VoteService;
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
 import vote.com.vo.User;
+import vote.com.vo.VoteElement;
 
 @Controller
 public class VoteController {
@@ -35,11 +36,14 @@ public class VoteController {
 	@RequestMapping(value="/voteDetail.do")
 	public ModelAndView voteDetail(@RequestParam("articleno") int articleNo) {
 		ModelAndView mv = new ModelAndView("/votecontents");
+		
 		Article article = voteService.getArticleDetail(articleNo);
-		ArrayList<Comment> comments = new ArrayList<Comment>();
-		comments = 	voteService.getComments(articleNo);
+		ArrayList<Comment> comments = voteService.getComments(articleNo);
+		ArrayList<VoteElement> voteElements = voteService.getVoteElements(articleNo);
+		
 		mv.addObject("article", article);
 		mv.addObject("comments", comments);
+		mv.addObject("voteElements", voteElements);
 		
 		return mv;
 	}
@@ -57,12 +61,16 @@ public class VoteController {
 	public ModelAndView addArticle(
 			@RequestParam("title") String title, 
 			@RequestParam("content") String content,
+			@RequestParam("voteElement") String voteElements,
 			HttpSession session) {
 		User user = (User) session.getAttribute("user");
+				
 		int articleNo = voteService.addArticle(
 				new Article().setTitle(title)
 					.setContent(content)
 					.setUserNo(user.getNo()));
+
+		voteService.addVoteElement(voteElements);
 		
 		return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);	
 	}

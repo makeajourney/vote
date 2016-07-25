@@ -42,6 +42,23 @@
 				<div class="tags">
 					<p><a>#expensive</a> <a>#car</a> <a>#please</a> <a>#choose</a> <a>#one</a></p>
 				</div>
+				
+				<p>vote element test</p>
+				
+				
+				<c:choose>
+					<c:when test="${fn:length(voteElements) > 0}">
+						<c:forEach items="${voteElements }" var="voteElement">
+							<p>${voteElement.content }</p>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<p>입력된 댓글이 없습니다.</p>
+					</c:otherwise>
+				</c:choose>
+				
+				
+				
 				<div class="vote">
 					<div class="item">
 						<div class="item1">

@@ -1,17 +1,18 @@
 package vote.com.service;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
 
 import vote.com.dao.VoteDao;
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
 import vote.com.vo.User;
+import vote.com.vo.VoteElement;
 
 @Service("voteService")
 public class VoteServiceImpl implements VoteService {
@@ -50,7 +51,7 @@ public class VoteServiceImpl implements VoteService {
 		// TODO Auto-generated method stub
 		voteDao.addArticle(article);
 		
-		return voteDao.getArticleNo();
+		return voteDao.getLatestArticleNo();
 	}
 
 	@Override
@@ -65,6 +66,29 @@ public class VoteServiceImpl implements VoteService {
 		int getUserNo = voteDao.getWriter(articleNo);
 		if (getUserNo == user.getNo())
 			voteDao.deleteArticle(articleNo);
+	}
+
+	@Override
+	public void addVoteElement(String voteElements) {
+		// TODO Auto-generated method stub
+		StringTokenizer st = new StringTokenizer(voteElements, ",");
+		int count = 1;
+		int articleNo = voteDao.getLatestArticleNo();
+		
+		while(st.hasMoreTokens()) {
+			VoteElement voteElement = new VoteElement()
+					.setArticleNo(articleNo)
+					.setContent(st.nextToken())
+					.setNo(count);
+			voteDao.addVoteElement(voteElement);
+			count ++;
+		}
+	}
+
+	@Override
+	public ArrayList<VoteElement> getVoteElements(int articleNo) {
+		// TODO Auto-generated method stub
+		return (ArrayList<VoteElement>) voteDao.getVoteElement(articleNo);
 	}
 
 }

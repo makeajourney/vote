@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
 import vote.com.vo.User;
+import vote.com.vo.VoteElement;
 
 public interface VoteService {
 
@@ -21,5 +22,9 @@ public interface VoteService {
 	void addComment(Comment comment);
 
 	void deleteArticle(User user, int articleNo);
+
+	void addVoteElement(String voteElements);
+
+	ArrayList<VoteElement> getVoteElements(int articleNo);
 
 }

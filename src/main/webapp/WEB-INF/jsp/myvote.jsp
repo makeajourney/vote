@@ -41,7 +41,7 @@
 		                            	<a href="<c:url value='/voteUpdate.do?articleno=${article.no }' />">Update</a>
 									</td>
 		                            <td>
-		                            	<a href="<c:url value='/voteDelete.do?articleno="${article.no }"' />">Delete</a>
+		                            	<a href="<c:url value='/deleteVote.do?articleno=${article.no }' />">Delete</a>
 									</td>
 		                        </tr>
 		                    </c:forEach>
