@@ -100,15 +100,10 @@ public class VoteController {
 			@RequestParam("articleno") int articleNo,
 			HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		// 삭제구문 
-//		if (voteService.deleteVote(articleNo, user)) {
-//			return new ModelAndView("redirect:/main.do");
-//		}
-//		else {
-//			return new ModelAndView("");
-//		}
 		
-		return null;
+		voteService.deleteArticle(user, articleNo);
+		
+		return new ModelAndView("redirect:/main.do");
 	}
 	
 	

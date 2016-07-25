@@ -64,4 +64,14 @@ public class VoteDao extends AbstractDAO{
 		// TODO Auto-generated method stub
 		insert("vote.addComment", comment);
 	}
+
+	public int getWriter(int articleNo) {
+		// TODO Auto-generated method stub
+		return (int) selectOne("vote.getWriter", articleNo);
+	}
+
+	public void deleteArticle(int articleNo) {
+		// TODO Auto-generated method stub
+		update("vote.deleteOneArticle", articleNo);
+	}
 }

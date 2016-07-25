@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="vote">
+
     <!-- user -->
     <select id="selectUser" parameterType="user" resultType="user">
         <![CDATA[
@@ -35,6 +36,7 @@
     	]]>
     </insert>
     
+    
     <!-- article -->
     <select id="selectOneArticle" parameterType="int" resultType="article">
     	<![CDATA[
@@ -44,7 +46,8 @@
     			article.content content,
     			article.hit_count hitCount,
     			article.create_date createDate,
-    			user.name userName
+    			user.name userName,
+    			user.no userNo
     		FROM
     			article, user
     		WHERE
@@ -63,7 +66,8 @@
     		FROM
     			article, user
     		WHERE
-    			article.user_no = user.no
+    			article.user_no = user.no and
+    			article.delete_field = 0
     		ORDER BY create_date DESC
     	]]>
     </select>
@@ -79,7 +83,8 @@
     			article, user
     		WHERE
     			user.no = #{userNo} and
-    			article.user_no = user.no
+    			article.user_no = user.no and
+    			article.delete_field = 0
     		ORDER BY create_date DESC
     	]]>
     </select>
@@ -93,7 +98,8 @@
     			hit_count,
     			create_date,
     			update_date, 
-    			user_no
+    			user_no,
+    			delete_field
     		)
     		values
     		(
@@ -102,7 +108,8 @@
     			0,
     			NOW(),
     			NOW(),
-    			#{userNo}
+    			#{userNo},
+    			0
     		)
     	]]>
     </insert>
@@ -123,6 +130,27 @@
 	    ]]>
 	</update>
 	
+	<select id="getWriter" parameterType="int" resultType="int">
+		<![CDATA[
+			SELECT
+				user_no
+			FROM
+				article
+			WHERE
+				no = #{articleNo}
+		]]>
+	</select>
+	
+	<update id="deleteOneArticle" parameterType="int">
+		<![CDATA[
+			UPDATE article
+			SET
+				delete_field = 1
+			WHERE
+				no = #{articleNo}
+		]]>
+	</update>
+	
     <!-- comment -->
     
     <select id="selectCommentsForArticle" parameterType="int" resultType="comment">
@@ -137,7 +165,8 @@
     			user 
     		WHERE
     			article_no = #{articleNo} and 
-    			user.no = comment.user_no
+    			user.no = comment.user_no and
+    			comment.delete_field = 0
     		ORDER BY create_date ASC
     	]]>
     </select>
@@ -162,4 +191,14 @@
 			);
     	]]>
     </insert>
+    
+    <update id="deleteComment" parameterType="int">
+    	<![CDATA[
+    		UPDATE comment
+    		SET
+    			delete_field = 1	
+    		WHERE
+    			no = #{commentNo}
+    	]]>
+    </update>
 </mapper>

@@ -18,7 +18,7 @@
 					<button class="listbtn" onclick='location.href="<c:url value='/main.do' />"'> &lt; list</button>
 					<div class="cbtn3">
 						<button class="outerbtn linkbtn">link</button>
-						<c:if test="${comment.userNo eq user.no}">
+						<c:if test="${article.userNo eq user.no}">
 							<button class="outerbtn deletebtn" >delete</button>
 							<button class="outerbtn upbtn">update</button>
 						</c:if>
