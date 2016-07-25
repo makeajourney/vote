@@ -69,10 +69,15 @@ public class VoteController {
 	
 	@RequestMapping(value="/showMyVoteList.do") 
 	public ModelAndView showMyVoteList (HttpSession session) {
-		int userNo = ((User) session.getAttribute("user")).getNo();
-		ModelAndView mv = new ModelAndView("/myvote");
-		ArrayList<Article> myArticles = voteService.getMyArticleList(userNo);
-		mv.addObject("articleList", myArticles);
+		User user = ((User) session.getAttribute("user"));
+		ModelAndView mv = null;
+		if (user != null) {
+			mv = new ModelAndView("/myvote");
+			ArrayList<Article> myArticles = voteService.getMyArticleList(user.getNo());
+			mv.addObject("articleList", myArticles);			
+		} else {
+			mv = new ModelAndView("redirect:/login.do");
+		}
 		return mv;
 	}
 	
