@@ -1,6 +1,7 @@
 package vote.com.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +9,7 @@ import vote.com.vo.Article;
 import vote.com.vo.Comment;
 import vote.com.vo.User;
 import vote.com.vo.VoteElement;
+import vote.com.vo.VoteFile;
 
 public interface VoteService {
 
@@ -28,5 +30,7 @@ public interface VoteService {
 	ArrayList<VoteElement> getVoteElements(int articleNo);
 
 	void deleteComment(User user, int commentNo);
+
+	List<VoteFile> getVoteFiles(int articleNo);
 
 }

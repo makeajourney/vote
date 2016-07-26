@@ -34,7 +34,16 @@
 					</div>
 				</div>
 				<div class="img">
-					<img src="http://imgnews.naver.net/image/215/2015/08/21/A201508210041_1_99_20150821103503.jpg?type=w540"/>
+				
+					<!-- img file 처리 -->
+				
+					<c:if test="${fn:length(votefiles) > 0}">
+						<c:forEach items="${votefiles }" var="votefile">
+							<img src="/Users/Soyoun/Documents/files/${votefile.storedFileName }"/>		
+						</c:forEach>
+					</c:if>
+				
+					
 				</div>
 				<p class="lead">
 					${article.content }

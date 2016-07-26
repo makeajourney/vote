@@ -38,6 +38,7 @@ public class VoteServiceImpl implements VoteService {
 	public Article getArticleDetail(int articleNo) {
 		// TODO Auto-generated method stub
 		voteDao.updatehitcount(articleNo);
+		
 		return voteDao.getArticleDetail(articleNo);
 	}
 
@@ -110,5 +111,11 @@ public class VoteServiceImpl implements VoteService {
 			voteDao.addVoteElement(voteElement);
 			count ++;
 		}
+	}
+
+	@Override
+	public List<VoteFile> getVoteFiles(int articleNo) {
+		// TODO Auto-generated method stub
+		return voteDao.selectFileList(articleNo);
 	}
 }

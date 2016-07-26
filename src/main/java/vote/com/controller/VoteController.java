@@ -1,6 +1,7 @@
 package vote.com.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import vote.com.vo.Article;
 import vote.com.vo.Comment;
 import vote.com.vo.User;
 import vote.com.vo.VoteElement;
+import vote.com.vo.VoteFile;
 
 @Controller
 public class VoteController {
@@ -41,10 +43,12 @@ public class VoteController {
 		Article article = voteService.getArticleDetail(articleNo);
 		ArrayList<Comment> comments = voteService.getComments(articleNo);
 		ArrayList<VoteElement> voteElements = voteService.getVoteElements(articleNo);
-		
+		List<VoteFile> votefiles = voteService.getVoteFiles(articleNo);
+
 		mv.addObject("article", article);
 		mv.addObject("comments", comments);
 		mv.addObject("voteElements", voteElements);
+		mv.addObject("votefiles", votefiles);
 		
 		return mv;
 	}

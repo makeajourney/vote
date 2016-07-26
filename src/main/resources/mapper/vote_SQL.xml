@@ -176,6 +176,21 @@
 		]]>
 	</insert>
 	
+	<select id="selectFileList" parameterType="int" resultType="voteFile">
+		<![CDATA[
+			SELECT
+				no no,
+				original_file_name originalFileName,
+				stored_file_name storedFileName,
+				ROUND(file_size/1024, 1) as fileSize
+			FROM
+				vote_file
+			WHERE
+				article_no = #{articleNo}
+				and delete_field = 0
+		]]>
+	</select>
+	
 	<!-- voteElement -->
 	<insert id="insertVoteElement" parameterType="voteElement">
 		<![CDATA[

@@ -1,6 +1,7 @@
 package vote.com.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -101,5 +102,10 @@ public class VoteDao extends AbstractDAO{
 	public void insertFile(VoteFile voteFile) {
 		// TODO Auto-generated method stub
 		insert("vote.insertFile", voteFile);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<VoteFile> selectFileList(int articleNo) {
+		return (List<VoteFile>) selectList("vote.selectFileList", articleNo);
 	}
 }
