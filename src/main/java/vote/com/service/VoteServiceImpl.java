@@ -87,7 +87,7 @@ public class VoteServiceImpl implements VoteService {
 	@Override
 	public ArrayList<VoteElement> getVoteElements(int articleNo) {
 		// TODO Auto-generated method stub
-		return (ArrayList<VoteElement>) voteDao.getVoteElement(articleNo);
+		return voteDao.getVoteElement(articleNo);
 	}
 
 	@Override

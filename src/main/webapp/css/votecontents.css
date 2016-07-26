@@ -18,6 +18,9 @@
 .outerbtn {
     float: right;
 }
+.page-header {
+	padding-bottom: 30px;
+}
 
 .main {
     border: 2px solid black;
@@ -34,6 +37,7 @@
 .comment2 {
     border: 2px solid black;
     padding: 15px;
+    padding-bottom:30px;
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 15px;

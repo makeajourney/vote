@@ -106,6 +106,6 @@ public class VoteDao extends AbstractDAO{
 	
 	@SuppressWarnings("unchecked")
 	public List<VoteFile> selectFileList(int articleNo) {
-		return (List<VoteFile>) selectList("vote.selectFileList", articleNo);
+		return selectList("vote.selectFileList", articleNo);
 	}
 }

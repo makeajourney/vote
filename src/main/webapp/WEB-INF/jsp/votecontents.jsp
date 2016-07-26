@@ -70,30 +70,27 @@
 				
 				
 				<div class="vote">
-					<div class="item">
-						<div class="item1">
-							<div class="label">
+					<div class="item" onclick="voteitem()">
+						<div id="item1">
 								BMW
-								<span class="tooltiptext">1.53%</span>
-							</div>
 						</div>
 						<div class="itemnum">3<br></div>
 					</div>
 					<div class="item">
-						<div class="item2">
-							<div class="label">Mercedes-Benz</div>
+						<div id="item2">
+							Mercedes-Benz
 						</div>
 						<div class="itemnum">37<br></div>
 					</div>
 					<div class="item">
-						<div class="item3">
-							<div class="label">LAND ROVER</div>
+						<div id="item3">
+							LAND ROVER
 						</div>
 						<div class="itemnum">127<br></div>
 					</div>
 					<div class="item">
-						<div class="item4">
-							<div class="label">BENTLY</div>
+						<div id="item4">
+							BENTLY
 						</div>
 						<div class="itemnum">28</div>
 					</div>
@@ -103,9 +100,9 @@
 				</div>
 			</div>
 			<div class="comment">
-				<form class="commentform" action="addComment.do" method="post" onsubmit="return chkformComment();">
+				<form id="commentform" action="addComment.do" method="post" onsubmit="return chkformComment();">
 					<input type="hidden" name="articleno" value="${article.no }" />
-					<input type="checkbox" class="checked" id="checked" /> suggest the vote element
+					<input type="checkbox" class="checked" id="checked" onchange="changeAction();" /> suggest the vote element
 					<input type="text" id="sgbox" class="sgbox" placeholder=" vote element"/><br>
 					<div class="box">
 						<input type="text" name="context" id="cbox" class="cbox"/>
@@ -118,26 +115,25 @@
 				<c:when test="${fn:length(comments) > 0}">
 					<c:forEach items="${comments }" var="comment">
 						<div class="comment2">
-							<div>
-								<p class="username">${comment.userName}</p>
-								<div class="date">${comment.updateDate }</div>
+							<div class="username">${comment.userName}
+								<div class="date">${comment.updateDate }
+								</div>
 							</div>
 							<div>
 								<p>${comment.context }</p>
-								<div>
-									<input type="text" class="edittext"/>
-								</div>
-							</div>
-
+								
 							<c:if test="${comment.userNo eq user.no}">
 
+							
 								<div class="cbtn3">
-									<button class="cbtn2 edit">edit</button>
+									<button class="cbtn2 edit" onclick="editcomment(this)">edit</button>
 									<button class="cbtn2 delete" onclick='location.href="<c:url value='/deleteComment.do?articleno=${article.no }&commentno=${comment.no }' />"'>
 										delete
 									</button>
 								</div>
 							</c:if>
+							</div>
+							
 						</div>
 					</c:forEach>
 				</c:when>
