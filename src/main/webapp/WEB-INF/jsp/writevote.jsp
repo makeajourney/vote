@@ -29,7 +29,7 @@
 					</div>
 
 					<div class="col-xs-13" >
-						<input class="form-control" id="ex3" type="text" placeholder="tags" />
+						<input class="form-control" id="ex3" type="text" placeholder="tags" name="tags"/>
 					</div>
 					<br/>
 

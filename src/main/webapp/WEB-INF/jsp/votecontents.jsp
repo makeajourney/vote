@@ -27,11 +27,13 @@
 			</div>
 			<div class="main">
 				<div class="page-header">
-					<h2>${article.title }</h2>
-					<div class="date">
-						${article.updateTime }
-						<div class="name">${article.userName}</div>
+					<h2 id="title">${article.title }
+					<div class="name">${article.userName}
+						<div class="date">
+							${article.updateTime }
+						</div>
 					</div>
+					</h2>
 				</div>
 				<div class="img">
 				
@@ -70,7 +72,7 @@
 				
 				
 				<div class="vote">
-					<div class="item" onclick="voteitem()">
+					<div class="item" onclick="voteitem(this)">
 						<div id="item1">
 								BMW
 						</div>
@@ -115,24 +117,28 @@
 				<c:when test="${fn:length(comments) > 0}">
 					<c:forEach items="${comments }" var="comment">
 						<div class="comment2">
-							<div class="username">${comment.userName}
-								<div class="date">${comment.updateDate }
+							<form action="updateComment.do" method="post">
+								<input type="hidden" name="commentno" value="${comment.no }" />
+								<div class="username">${comment.userName}
+									<div class="date">${comment.updateDate }
+									</div>
 								</div>
-							</div>
-							<div>
-								<p>${comment.context }</p>
-								
-							<c:if test="${comment.userNo eq user.no}">
-
+								<div>
+									<p>${comment.context }</p>
+									
+									<c:if test="${comment.userNo eq user.no}">
+		
+									
+										<div class="cbtn3">
+											<button class="cbtn2 edit" onclick="editcomment(this)">edit</button>
+											<button class="cbtn2 delete" onclick='location.href="<c:url value='/deleteComment.do?articleno=${article.no }&commentno=${comment.no }' />"'>
+												delete
+											</button>
+										</div>
+									</c:if>
+								</div>
+							</form>
 							
-								<div class="cbtn3">
-									<button class="cbtn2 edit" onclick="editcomment(this)">edit</button>
-									<button class="cbtn2 delete" onclick='location.href="<c:url value='/deleteComment.do?articleno=${article.no }&commentno=${comment.no }' />"'>
-										delete
-									</button>
-								</div>
-							</c:if>
-							</div>
 							
 						</div>
 					</c:forEach>

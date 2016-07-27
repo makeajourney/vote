@@ -287,4 +287,28 @@
     			no = #{commentNo}
     	]]>
     </update>
+    
+    <update id="updateComment" parameterType="comment">
+    	<![CDATA[
+	    	UPDATE comment
+	    	SET
+	    		context = #{context},
+	    		update_date = NOW()
+	    	WHERE
+	    		no = #{no}
+    	]]>
+    </update>
+    
+    <select id="selectAriticleNoFrom" parameterType="int" resultType="int">
+    	<![CDATA[
+    		SELECT
+    			article_no articleNo
+    		FROM
+    			comment
+    		WHERE
+    			no = #{commentNo}
+    	]]>
+    </select>
+    
+    
 </mapper>

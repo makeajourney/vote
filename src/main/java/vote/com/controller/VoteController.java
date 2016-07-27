@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UrlPathHelper;
 
 import vote.com.service.VoteService;
 import vote.com.vo.Article;
@@ -54,7 +55,8 @@ public class VoteController {
 	}
 
 	@RequestMapping(value="/writeVote.do", method=RequestMethod.GET)
-	public ModelAndView showWriteWindow(HttpSession session) {
+	public ModelAndView showWriteWindow(
+			HttpSession session) {
 		if (((User) session.getAttribute("user")) != null ){
 			return new ModelAndView("/writevote");
 		} else {
@@ -67,6 +69,7 @@ public class VoteController {
 			@RequestParam("title") String title, 
 			@RequestParam("content") String content,
 			@RequestParam("voteElement") String voteElements,
+			@RequestParam("tags") String tags,
 			HttpServletRequest request,
 			HttpSession session) throws Exception {
 		User user = (User) session.getAttribute("user");
@@ -132,6 +135,17 @@ public class VoteController {
 		
 		voteService.deleteComment(user, commentNo);
 		
+		return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);
+	}
+	
+	@RequestMapping(value="/updateComment.do", method=RequestMethod.POST)
+	public ModelAndView updateComment(
+			@RequestParam("commentno") int commentNo,
+			@RequestParam("context") String context,
+			HttpSession session) {
+		User user = ((User) session.getAttribute("user"));
+		
+		int articleNo = voteService.updateComment(user, new Comment().setNo(commentNo).setContext(context));
 		return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);
 	}
 	

@@ -33,4 +33,6 @@ public interface VoteService {
 
 	List<VoteFile> getVoteFiles(int articleNo);
 
+	int updateComment(User user, Comment comment);
+
 }

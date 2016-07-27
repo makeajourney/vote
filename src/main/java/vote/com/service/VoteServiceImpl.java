@@ -30,13 +30,11 @@ public class VoteServiceImpl implements VoteService {
 
 	@Override
 	public ArrayList<Article> getArticleList() {
-		// TODO Auto-generated method stub
 		return voteDao.getArticleList();
 	}
 
 	@Override
 	public Article getArticleDetail(int articleNo) {
-		// TODO Auto-generated method stub
 		voteDao.updatehitcount(articleNo);
 		
 		return voteDao.getArticleDetail(articleNo);
@@ -44,19 +42,16 @@ public class VoteServiceImpl implements VoteService {
 
 	@Override
 	public ArrayList<Comment> getComments(int articleNo) {
-		// TODO Auto-generated method stub
 		return voteDao.getCommentsForArticle(articleNo);
 	}
 
 	@Override
 	public ArrayList<Article> getMyArticleList(int userNo) {
-		// TODO Auto-generated method stub
 		return voteDao.getMyArticleList(userNo);
 	}
 
 	@Override
 	public int addArticle(Article article, String voteElements, HttpServletRequest request) throws Exception {
-		// TODO Auto-generated method stub
 		voteDao.addArticle(article);
 		int articleNo = voteDao.getLatestArticleNo();
 		this.addVoteElement(articleNo, voteElements);
@@ -71,13 +66,11 @@ public class VoteServiceImpl implements VoteService {
 
 	@Override
 	public void addComment(Comment comment) {
-		// TODO Auto-generated method stub
 		voteDao.addComment(comment);
 	}
 
 	@Override
 	public void deleteArticle(User user, int articleNo) {
-		// TODO Auto-generated method stub
 		int getUserNo = voteDao.getWriter(articleNo);
 		if (getUserNo == user.getNo())
 			voteDao.deleteArticle(articleNo);
@@ -86,20 +79,17 @@ public class VoteServiceImpl implements VoteService {
 
 	@Override
 	public ArrayList<VoteElement> getVoteElements(int articleNo) {
-		// TODO Auto-generated method stub
 		return voteDao.getVoteElement(articleNo);
 	}
 
 	@Override
 	public void deleteComment(User user, int commentNo) {
-		// TODO Auto-generated method stub
 		if (user.getNo() == voteDao.getUserNoToComment(commentNo)) {
 			voteDao.deleteComment(commentNo);
 		}
 	}
 
 	private void addVoteElement(int articleNo, String voteElements) {
-		// TODO Auto-generated method stub
 		StringTokenizer st = new StringTokenizer(voteElements, ",");
 		int count = 1;
 		
@@ -115,7 +105,14 @@ public class VoteServiceImpl implements VoteService {
 
 	@Override
 	public List<VoteFile> getVoteFiles(int articleNo) {
-		// TODO Auto-generated method stub
 		return voteDao.selectFileList(articleNo);
+	}
+
+	@Override
+	public int updateComment(User user, Comment comment) {
+		if (user.getNo() == voteDao.getUserNoToComment(comment.getNo())) {
+			voteDao.updateComment(comment);
+		}
+		return voteDao.getArticleNoFromComment(comment.getNo());
 	}
 }
