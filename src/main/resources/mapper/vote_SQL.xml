@@ -229,21 +229,43 @@
     
     <select id="selectCommentsForArticle" parameterType="int" resultType="comment">
     	<![CDATA[
+    		SELECT
+    			comment.no no,
+    			comment.context context,
+    			comment.update_date updateDate,
+  				comment.user_no userNo,
+    			suggest_element.no suggestElementNo,
+    			suggest_element.context suggestElementContext,
+    			user.name userName
+    			
+    		FROM
+    			comment LEFT JOIN suggest_element
+    		ON
+    			comment.no = suggest_element.comment_no
+    			JOIN
+    				user 
+    			ON 
+    				comment.user_no = user.no
+    		WHERE
+    			comment.delete_field = 0 and
+    			comment.article_no = #{articleNo}
+    	]]>
+    	<!-- 
     		SELECT 
     			user.no	userNo,
     			user.name userName,
     			comment.no no,
     			comment.context context, 
-    			comment.update_date updateDate
+    			comment.update_date updateDate,
     		FROM
     			comment, 
-    			user 
+    			user,
     		WHERE
     			article_no = #{articleNo} and 
     			user.no = comment.user_no and
-    			comment.delete_field = 0
+    			comment.delete_field = 0 and
     		ORDER BY create_date ASC
-    	]]>
+    	 -->
     </select>
     
     <select id="selectUserNoToSingleComment" parameterType="int" resultType="int">
@@ -310,5 +332,24 @@
     	]]>
     </select>
     
+    <select id="selectLatestCommentNo" resultType="int">
+    	<![CDATA[
+    		SELECT MAX(no) FROM comment
+    	]]>
+    </select>
     
+    <insert id="insertSuggestElement" parameterType="comment">
+    	<![CDATA[
+    		INSERT INTO suggest_element
+    		(
+    			context,
+    			comment_no
+    		)
+    		VALUES
+    		(
+    			#{suggestElementContext},
+    			#{no}
+    		)
+    	]]>
+    </insert>
 </mapper>

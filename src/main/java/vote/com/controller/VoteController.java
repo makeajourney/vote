@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UrlPathHelper;
 
 import vote.com.service.VoteService;
 import vote.com.vo.Article;
@@ -108,6 +107,27 @@ public class VoteController {
 					.setArticleNo(articleNo)
 					.setContext(commentContext)
 					.setUserNo(user.getNo()));
+			
+			return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);
+		} else {
+			return new ModelAndView("redirect:/login.do");
+		}
+	}
+	
+	@RequestMapping("/addVoteSuggest.do")
+	public ModelAndView addVoteSuggest (
+			@RequestParam("context") String commentContext,
+			@RequestParam("articleno") int articleNo,
+			@RequestParam("voteSuggest") String voteSuggest,
+			HttpSession session) {
+		User user = ((User) session.getAttribute("user"));
+
+		if (user != null) {
+			voteService.addCommentVoteSuggestElement(new Comment()
+					.setArticleNo(articleNo)
+					.setContext(commentContext)
+					.setUserNo(user.getNo())
+					.setSuggestElementContext(voteSuggest));
 			
 			return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);
 		} else {

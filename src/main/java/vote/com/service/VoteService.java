@@ -35,4 +35,6 @@ public interface VoteService {
 
 	int updateComment(User user, Comment comment);
 
+	void addCommentVoteSuggestElement(Comment comment);
+
 }

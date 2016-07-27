@@ -28,6 +28,8 @@ public class VoteServiceImpl implements VoteService {
 	@Resource(name="voteDao")
 	private VoteDao voteDao;
 
+	/* article */
+	
 	@Override
 	public ArrayList<Article> getArticleList() {
 		return voteDao.getArticleList();
@@ -38,11 +40,6 @@ public class VoteServiceImpl implements VoteService {
 		voteDao.updatehitcount(articleNo);
 		
 		return voteDao.getArticleDetail(articleNo);
-	}
-
-	@Override
-	public ArrayList<Comment> getComments(int articleNo) {
-		return voteDao.getCommentsForArticle(articleNo);
 	}
 
 	@Override
@@ -63,12 +60,7 @@ public class VoteServiceImpl implements VoteService {
 		
 		return voteDao.getLatestArticleNo();
 	}
-
-	@Override
-	public void addComment(Comment comment) {
-		voteDao.addComment(comment);
-	}
-
+	
 	@Override
 	public void deleteArticle(User user, int articleNo) {
 		int getUserNo = voteDao.getWriter(articleNo);
@@ -76,10 +68,15 @@ public class VoteServiceImpl implements VoteService {
 			voteDao.deleteArticle(articleNo);
 	}
 
-
+	/* comment */
+	
 	@Override
-	public ArrayList<VoteElement> getVoteElements(int articleNo) {
-		return voteDao.getVoteElement(articleNo);
+	public ArrayList<Comment> getComments(int articleNo) {
+		return voteDao.getCommentsForArticle(articleNo);
+	}
+	@Override
+	public void addComment(Comment comment) {
+		voteDao.addComment(comment);
 	}
 
 	@Override
@@ -87,6 +84,25 @@ public class VoteServiceImpl implements VoteService {
 		if (user.getNo() == voteDao.getUserNoToComment(commentNo)) {
 			voteDao.deleteComment(commentNo);
 		}
+	}
+
+	@Override
+	public int updateComment(User user, Comment comment) {
+		if (user.getNo() == voteDao.getUserNoToComment(comment.getNo())) {
+			voteDao.updateComment(comment);
+		}
+		return voteDao.getArticleNoFromComment(comment.getNo());
+	}
+	
+	/* vote suggest */
+	
+	
+	
+	/* voteElement */
+	
+	@Override
+	public ArrayList<VoteElement> getVoteElements(int articleNo) {
+		return voteDao.getVoteElement(articleNo);
 	}
 
 	private void addVoteElement(int articleNo, String voteElements) {
@@ -109,10 +125,10 @@ public class VoteServiceImpl implements VoteService {
 	}
 
 	@Override
-	public int updateComment(User user, Comment comment) {
-		if (user.getNo() == voteDao.getUserNoToComment(comment.getNo())) {
-			voteDao.updateComment(comment);
-		}
-		return voteDao.getArticleNoFromComment(comment.getNo());
+	public void addCommentVoteSuggestElement(Comment comment) {
+		voteDao.addComment(comment);
+		comment.setNo(voteDao.getLatestCommentNo());
+		voteDao.addSuggestElement(comment);
 	}
+
 }

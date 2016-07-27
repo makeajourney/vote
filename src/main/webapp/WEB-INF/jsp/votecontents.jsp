@@ -16,8 +16,26 @@
 			<div class="outer">
 				<div>
 					<button class="listbtn" onclick='location.href="<c:url value='/main.do' />"'> &lt; list</button>
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="exampleModalLabel"></h4>
+								</div>
+								<div class="modal-body" id="popup">
+									<form>
+										<div class="form-group">
+											<input type="text" class="form-control" id="recipient-name">
+										</div>											
+									</form>
+									<button type="button" class="btn btn-primary pull-right">Copy to clipboard</button>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="cbtn3">
-						<button class="outerbtn linkbtn">link</button>
+						<button class="outerbtn linkbtn" id="linkBtn" type="button" data-toggle="modal" data-target="#exampleModal">link</button>
 						<c:if test="${article.userNo eq user.no}">
 							<button class="outerbtn deletebtn" onclick='location.href="<c:url value='/deleteVote.do?articleno=${article.no }' />"'>delete</button>
 							<button class="outerbtn upbtn">update</button>
@@ -27,13 +45,13 @@
 			</div>
 			<div class="main">
 				<div class="page-header">
-					<h2 id="title">${article.title }
+						<h2 id="title">${article.title }</h2>
 					<div class="name">${article.userName}
 						<div class="date">
 							${article.updateTime }
 						</div>
 					</div>
-					</h2>
+			
 				</div>
 				<div class="img">
 				
@@ -78,19 +96,19 @@
 						</div>
 						<div class="itemnum">3<br></div>
 					</div>
-					<div class="item">
+					<div class="item" onclick="voteitem(this)">
 						<div id="item2">
 							Mercedes-Benz
 						</div>
 						<div class="itemnum">37<br></div>
 					</div>
-					<div class="item">
+					<div class="item" onclick="voteitem(this)">
 						<div id="item3">
 							LAND ROVER
 						</div>
 						<div class="itemnum">127<br></div>
 					</div>
-					<div class="item">
+					<div class="item" onclick="voteitem(this)">
 						<div id="item4">
 							BENTLY
 						</div>
@@ -105,7 +123,7 @@
 				<form id="commentform" action="addComment.do" method="post" onsubmit="return chkformComment();">
 					<input type="hidden" name="articleno" value="${article.no }" />
 					<input type="checkbox" class="checked" id="checked" onchange="changeAction();" /> suggest the vote element
-					<input type="text" id="sgbox" class="sgbox" placeholder=" vote element"/><br>
+					<input type="text" name="voteSuggest" id="sgbox" class="sgbox" placeholder=" vote element"/><br>
 					<div class="box">
 						<input type="text" name="context" id="cbox" class="cbox"/>
 						<button type="submit" class="cbtn">Submit</button>
@@ -117,27 +135,37 @@
 				<c:when test="${fn:length(comments) > 0}">
 					<c:forEach items="${comments }" var="comment">
 						<div class="comment2">
-							<form action="updateComment.do" method="post">
-								<input type="hidden" name="commentno" value="${comment.no }" />
-								<div class="username">${comment.userName}
-									<div class="date">${comment.updateDate }
-									</div>
+							<div class="username">${comment.userName}
+								<div class="date">${comment.updateDate }
 								</div>
-								<div>
+							</div>
+							<div>
+								<form action="updateComment.do" method="post">
+									<input type="hidden" name="commentno" value="${comment.no }" />
 									<p>${comment.context }</p>
 									
-									<c:if test="${comment.userNo eq user.no}">
-		
-									
-										<div class="cbtn3">
-											<button class="cbtn2 edit" onclick="editcomment(this)">edit</button>
-											<button class="cbtn2 delete" onclick='location.href="<c:url value='/deleteComment.do?articleno=${article.no }&commentno=${comment.no }' />"'>
-												delete
-											</button>
+									<c:if test="${comment.suggestElementNo != ''}">
+										<div>
+											Suggest the vote element
+											<span class="sgitem">${comment.suggestElementContext }</span>
+											<input type="button" class="likebtn" value="like"/>
+											<span>6</span>
 										</div>
 									</c:if>
-								</div>
-							</form>
+							
+									
+								</form>
+								<c:if test="${comment.userNo eq user.no}">
+		
+									
+									<div class="cbtn3">
+										<button class="cbtn2 edit" onclick="editcomment(this)">edit</button>
+										<button class="cbtn2 delete" onclick='location.href="<c:url value='/deleteComment.do?articleno=${article.no }&commentno=${comment.no }' />"'>
+											delete
+										</button>
+									</div>
+								</c:if>
+							</div>
 							
 							
 						</div>
@@ -147,21 +175,6 @@
 					<p>입력된 댓글이 없습니다.</p>
 				</c:otherwise>
 			</c:choose>
-			<div class="comment2">
-				<div><p class="username">some_user_2</p>
-				<div class="date">2016-07-21 14:46</div>
-				<div>
-					<p>I want to buy Chrysler.</p>
-				</div>
-				<div>
-					Suggest the vote element
-					<span class="sgitem">Chrysler</span>
-				</div>
-				<div class="cbtn3">
-					<button class="cbtn2 edit">edit</button>
-					<button class="cbtn2 delete">delete</button>
-				</div>
-			</div>
 		</div>
 		<div>
 			<button class="listbtn" onclick='location.href="<c:url value='/main.do' />"'> &lt; list</button>

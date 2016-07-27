@@ -12,6 +12,11 @@ public class Comment {
 	private Date createDate;
 	private Date updateDate;
 	
+	// suggest field
+	private int suggestElementNo;
+	private String suggestElementContext;
+	
+	
 	public int getArticleNo() {
 		return articleNo;
 	}
@@ -68,4 +73,19 @@ public class Comment {
 		this.updateDate = updateDate;
 		return this;
 	}
+	public int getSuggestElementNo() {
+		return suggestElementNo;
+	}
+	public Comment setSuggestElementNo(int suggestElementNo) {
+		this.suggestElementNo = suggestElementNo;
+		return this;
+	}
+	public String getSuggestElementContext() {
+		return suggestElementContext;
+	}
+	public Comment setSuggestElementContext(String suggestElementContext) {
+		this.suggestElementContext = suggestElementContext;
+		return this;
+	}
+	
 }

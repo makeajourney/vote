@@ -101,4 +101,14 @@ public class VoteDao extends AbstractDAO{
 		// TODO Auto-generated method stub
 		return (int) selectOne("vote.selectAriticleNoFrom", commentNo);
 	}
+
+	public void addSuggestElement(Comment comment) {
+		// TODO Auto-generated method stub
+		insert("vote.insertSuggestElement", comment);
+	}
+
+	public int getLatestCommentNo() {
+		// TODO Auto-generated method stub
+		return (int) selectOne("selectLatestCommentNo");
+	}
 }
