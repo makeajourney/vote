@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
+import vote.com.vo.SuggestLike;
+import vote.com.vo.Tag;
 import vote.com.vo.User;
 import vote.com.vo.VoteElement;
 import vote.com.vo.VoteFile;
@@ -98,17 +100,27 @@ public class VoteDao extends AbstractDAO{
 	}
 
 	public int getArticleNoFromComment(int commentNo) {
-		// TODO Auto-generated method stub
 		return (int) selectOne("vote.selectAriticleNoFrom", commentNo);
 	}
 
 	public void addSuggestElement(Comment comment) {
-		// TODO Auto-generated method stub
 		insert("vote.insertSuggestElement", comment);
 	}
 
 	public int getLatestCommentNo() {
-		// TODO Auto-generated method stub
-		return (int) selectOne("selectLatestCommentNo");
+		return (int) selectOne("vote.selectLatestCommentNo");
+	}
+
+	public void addTag(Tag tag) {
+		insert("vote.insertTag", tag);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Tag> getTagsForArticle(int articleNo) {
+		return (List<Tag>) selectList("vote.selectTagsForArticle", articleNo);
+	}
+
+	public void insertSuggestLike(SuggestLike suggestLike) {
+		insert("vote.insertSuggestLike", suggestLike);
 	}
 }

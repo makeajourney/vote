@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
+import vote.com.vo.SuggestLike;
+import vote.com.vo.Tag;
 import vote.com.vo.User;
 import vote.com.vo.VoteElement;
 import vote.com.vo.VoteFile;
@@ -21,7 +23,7 @@ public interface VoteService {
 
 	ArrayList<Article> getMyArticleList(int userNo);
 
-	int addArticle(Article article, String voteElements, HttpServletRequest request) throws Exception;
+	int addArticle(Article article, String voteElements, String tags, HttpServletRequest request) throws Exception;
 
 	void addComment(Comment comment);
 
@@ -36,5 +38,9 @@ public interface VoteService {
 	int updateComment(User user, Comment comment);
 
 	void addCommentVoteSuggestElement(Comment comment);
+
+	List<Tag> getTagsForArticle(int articleNo);
+
+	void updateLikeCount(SuggestLike suggestLike);
 
 }

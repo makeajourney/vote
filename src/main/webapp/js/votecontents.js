@@ -91,14 +91,25 @@ function changeAction() {
 	}
 }
 
-function voteitem(obj) {
+/*function voteitem(obj) {
 	var choose = obj;
 	var choosename = choose.childNodes[1];
 	
-	choose.setAttribute("style", "background-color: #FFDFDF;");
-	choosename.setAttribute("style", "background-color: red;");
 	
-}
+	if(choose.onclick) {
+		choose.style.backgroundColor="#FFDFDF";
+		choosename.style.backgroundColor="red";	
+	}
+	
+	
+}*/
+
+$(".item").click(function(){
+	$(this).css("background","#FFDFDF");
+	$(this).children(".div_item").css("background","#FCA7A7");
+	$(this).siblings().css("background","#FCFED1");
+	$(this).siblings().children(".div_item").css("background","#FFFE77");
+	});
 
 
 

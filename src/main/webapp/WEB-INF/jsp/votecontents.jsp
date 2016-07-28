@@ -26,7 +26,7 @@
 								<div class="modal-body" id="popup">
 									<form>
 										<div class="form-group">
-											<input type="text" class="form-control" id="recipient-name">
+											<input type="text" class="form-control" id="recipient-name" />
 										</div>											
 									</form>
 									<button type="button" class="btn btn-primary pull-right">Copy to clipboard</button>
@@ -45,79 +45,71 @@
 			</div>
 			<div class="main">
 				<div class="page-header">
-						<h2 id="title">${article.title }</h2>
+				<div id="title">
+					${article.title }
 					<div class="name">${article.userName}
 						<div class="date">
 							${article.updateTime }
 						</div>
 					</div>
-			
+				</div>
 				</div>
 				<div class="img">
 				
-					<!-- img file 처리 -->
-				
 					<c:if test="${fn:length(votefiles) > 0}">
 						<c:forEach items="${votefiles }" var="votefile">
-							<img src="/Users/Soyoun/Documents/files/${votefile.storedFileName }"/>		
+							<img class="img" src="<c:url value='/common/getImageFile.do?fileno=${votefile.no }' />" />
 						</c:forEach>
 					</c:if>
-				
 					
 				</div>
 				<p class="lead">
 					${article.content }
 				</p>
 				<div class="tags">
-					<p><a>#expensive</a> <a>#car</a> <a>#please</a> <a>#choose</a> <a>#one</a></p>
+					<p>
+						<c:choose>
+							<c:when test="${fn:length(tags)>0 }">
+								<c:forEach items="${tags }" var="tagValue">
+									<a>#${tagValue.tag }</a>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								입력된 태그가 없습니다.
+							</c:otherwise>
+						</c:choose>
+					</p>
 				</div>
-				
-				<!-- 투표항목 조회 테스트용 코드 -->
-				<p>vote element test</p>
-				
-				
-				<c:choose>
-					<c:when test="${fn:length(voteElements) > 0}">
-						<c:forEach items="${voteElements }" var="voteElement">
-							<p>${voteElement.content }</p>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<p>입력된 댓글이 없습니다.</p>
-					</c:otherwise>
-				</c:choose>
-				<!-- 투표항목 조회 테스트용 코드 끝 -->
-				
-				
+
 				<div class="vote">
-					<div class="item" onclick="voteitem(this)">
-						<div id="item1">
-								BMW
-						</div>
-						<div class="itemnum">3<br></div>
-					</div>
-					<div class="item" onclick="voteitem(this)">
-						<div id="item2">
-							Mercedes-Benz
-						</div>
-						<div class="itemnum">37<br></div>
-					</div>
-					<div class="item" onclick="voteitem(this)">
-						<div id="item3">
-							LAND ROVER
-						</div>
-						<div class="itemnum">127<br></div>
-					</div>
-					<div class="item" onclick="voteitem(this)">
-						<div id="item4">
-							BENTLY
-						</div>
-						<div class="itemnum">28</div>
-					</div>
-					<div>
-						<input type="button" class="votebtn" value="VOTE!!" />
-					</div>
+					<c:choose>
+						<c:when test="${fn:length(voteElements) > 0}">
+							<c:forEach items="${voteElements }" var="voteElement">
+							
+								<div class="item">
+									
+									<div id="item1" class="div_item">
+										<div class="itemname">
+											${voteElement.content }
+										</div>
+									</div>
+									<div class="itemnum">3<br>
+									</div>
+								</div>
+							
+							</c:forEach>
+							
+							<!-- 투표버튼 -->
+							<div>
+								<input type="button" class="votebtn" value="VOTE" />
+							</div>
+						</c:when>
+						<c:otherwise>
+							<p>입력된 투표항목이 없습니다.</p>
+						</c:otherwise>
+					</c:choose>
 				</div>
+				
 			</div>
 			<div class="comment">
 				<form id="commentform" action="addComment.do" method="post" onsubmit="return chkformComment();">
@@ -148,7 +140,7 @@
 										<div>
 											Suggest the vote element
 											<span class="sgitem">${comment.suggestElementContext }</span>
-											<input type="button" class="likebtn" value="like"/>
+											<input type="button" class="likebtn" value="like" onclick='location.href="<c:url value='/updateLikeCount.do?articleno=${article.no }&elementno=${comment.suggestElementNo }' />"'/>
 											<span>6</span>
 										</div>
 									</c:if>
@@ -175,14 +167,15 @@
 					<p>입력된 댓글이 없습니다.</p>
 				</c:otherwise>
 			</c:choose>
-		</div>
-		<div>
+		
+		<div class="bottombtn">
 			<button class="listbtn" onclick='location.href="<c:url value='/main.do' />"'> &lt; list</button>
 			<div class="topbtn">
 				<a href="#">top</a>
 			</div>
 		</div>
 	</div>
+	
 	<%@ include file="/WEB-INF/include/footer.jsp" %>
 	<script src="js/votecontents.js"></script>
 </body>

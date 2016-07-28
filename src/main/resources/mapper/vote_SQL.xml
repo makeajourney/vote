@@ -352,4 +352,47 @@
     		)
     	]]>
     </insert>
+    
+    <insert id="insertTag" parameterType="tag">
+    	<![CDATA[
+    		INSERT INTO tag
+    		(
+    			article_no,
+    			tag
+    		)
+    		VALUES
+    		(
+    			#{articleNo},
+    			#{tag}
+    		)
+    	]]>
+    </insert>
+    
+    <select id="selectTagsForArticle" parameterType="int" resultType="tag">
+    	<![CDATA[
+    		SELECT
+    			tag
+    		FROM
+    			tag
+    		WHERE
+    			article_no = #{articleNo}
+    	]]>
+    </select>
+    
+    <insert id="insertSuggestLike" parameterType="suggestLike">
+    	<![CDATA[
+    		INSERT INTO
+    			suggest_like
+    		(
+    			suggest_no,
+    			user_no
+    		)
+    		VALUES
+    		(
+    			#{suggestNo},
+    			#{userNo}
+    		)
+    	]]>
+    </insert>
+    
 </mapper>

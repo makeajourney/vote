@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import vote.com.service.VoteService;
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
+import vote.com.vo.SuggestLike;
+import vote.com.vo.Tag;
 import vote.com.vo.User;
 import vote.com.vo.VoteElement;
 import vote.com.vo.VoteFile;
@@ -44,12 +46,15 @@ public class VoteController {
 		ArrayList<Comment> comments = voteService.getComments(articleNo);
 		ArrayList<VoteElement> voteElements = voteService.getVoteElements(articleNo);
 		List<VoteFile> votefiles = voteService.getVoteFiles(articleNo);
+		List<Tag> tags = voteService.getTagsForArticle(articleNo);
+//		List<SuggestLikeCount> suggestLikeCount = voteService.suggestLikeCount(articleNo);
 
 		mv.addObject("article", article);
 		mv.addObject("comments", comments);
 		mv.addObject("voteElements", voteElements);
 		mv.addObject("votefiles", votefiles);
-		
+		mv.addObject("tags", tags);
+
 		return mv;
 	}
 
@@ -76,7 +81,7 @@ public class VoteController {
 		int articleNo = voteService.addArticle(
 				new Article().setTitle(title)
 					.setContent(content)
-					.setUserNo(user.getNo()), voteElements, request);
+					.setUserNo(user.getNo()), voteElements, tags, request);
 		
 		return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);	
 	}
@@ -166,6 +171,19 @@ public class VoteController {
 		User user = ((User) session.getAttribute("user"));
 		
 		int articleNo = voteService.updateComment(user, new Comment().setNo(commentNo).setContext(context));
+		return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);
+	}
+	
+	// /updateLikeCount.do?articleno=${article.no }&elementno=${comment.suggestElementNo }
+	@RequestMapping(value="/updateLikeCount.do")
+	public ModelAndView updateLikeCount (
+			@RequestParam("articleno") int articleNo,
+			@RequestParam("elementno") int suggestElementNo,
+			HttpSession session) {
+		User user = ((User) session.getAttribute("user"));
+		
+		voteService.updateLikeCount(new SuggestLike().setSuggestNo(suggestElementNo).setUserNo(user.getNo()));
+		
 		return new ModelAndView("redirect:/voteDetail.do?articleno=" + articleNo);
 	}
 	

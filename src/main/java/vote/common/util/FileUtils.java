@@ -11,12 +11,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import vote.com.util.Constant;
 import vote.com.vo.VoteFile;
 
 
 @Component("fileUtils")
 public class FileUtils {
-	private static final String filePath = "/Users/Soyoun/Documents/files/";
+	private static final String filePath = new Constant().filePath;
     
     public List<VoteFile> parseInsertFileInfo(int articleNo, HttpServletRequest request) throws Exception{
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;

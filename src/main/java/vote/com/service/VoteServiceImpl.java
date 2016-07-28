@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import vote.com.dao.VoteDao;
 import vote.com.vo.Article;
 import vote.com.vo.Comment;
+import vote.com.vo.SuggestLike;
+import vote.com.vo.Tag;
 import vote.com.vo.User;
 import vote.com.vo.VoteElement;
 import vote.com.vo.VoteFile;
@@ -48,17 +50,33 @@ public class VoteServiceImpl implements VoteService {
 	}
 
 	@Override
-	public int addArticle(Article article, String voteElements, HttpServletRequest request) throws Exception {
+	public int addArticle(Article article, String voteElements, String tags, HttpServletRequest request) throws Exception {
 		voteDao.addArticle(article);
 		int articleNo = voteDao.getLatestArticleNo();
 		this.addVoteElement(articleNo, voteElements);
 		
+		// 파일추가 
 		List<VoteFile> list = fileUtils.parseInsertFileInfo(articleNo, request);
 		for (int i = 0, size = list.size(); i < size; i ++) {
 			voteDao.insertFile(list.get(i));
 		}
+		// 태그추가 
+		tags.replace(" ", "");
+		StringTokenizer st = new StringTokenizer(tags, ",");
 		
-		return voteDao.getLatestArticleNo();
+		while(st.hasMoreTokens()) {
+//			VoteElement voteElement = new VoteElement()
+//			.setArticleNo(articleNo)
+//			.setContent(st.nextToken())
+//			.setNo(count);
+//			voteDao.addVoteElement(voteElement);
+//			count ++;
+			Tag tag = new Tag().setArticleNo(articleNo).setTag(st.nextToken());
+			voteDao.addTag(tag);
+		}
+		
+		// 글 번호 반환 
+		return articleNo;
 	}
 	
 	@Override
@@ -129,6 +147,16 @@ public class VoteServiceImpl implements VoteService {
 		voteDao.addComment(comment);
 		comment.setNo(voteDao.getLatestCommentNo());
 		voteDao.addSuggestElement(comment);
+	}
+
+	@Override
+	public List<Tag> getTagsForArticle(int articleNo) {
+		return voteDao.getTagsForArticle(articleNo);
+	}
+
+	@Override
+	public void updateLikeCount(SuggestLike suggestLike) {
+		voteDao.insertSuggestLike(suggestLike);
 	}
 
 }

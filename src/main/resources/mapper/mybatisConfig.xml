@@ -24,6 +24,7 @@
         <typeAlias type="vote.com.vo.Tag" alias="tag" />
         <typeAlias type="vote.com.vo.Comment" alias="comment" />
         <typeAlias type="vote.com.vo.VoteFile" alias="voteFile" />
+        <typeAlias type="vote.com.vo.SuggestLike" alias="suggestLike" />
         
         <!-- TODO END: VO Setting -->
 	</typeAliases>
